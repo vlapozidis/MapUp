@@ -1,0 +1,319 @@
+{
+	"nav": {
+		"roadmap": "Οδικός Χάρτης"
+	},
+	"home": {
+		"title": "Καλώς ήρθες στο Onboarding",
+		"subtitle": "Βρες τον οδικό χάρτη του τμήματός σου, ακολούθησε τα βήματα και παρακολούθησε την πρόοδό σου.",
+		"cta": "Άνοιξε τον οδικό χάρτη →"
+	},
+	"guidePage": {
+		"guides": "Οδηγοί",
+		"backToRoadmap": "Πίσω στον οδικό χάρτη"
+	},
+	"rolePicker": {
+		"comingSoonTitle": "Σύντομα κοντά"
+	},
+	"departments": {
+		"operations": { "name": "Λειτουργίες" },
+		"sales": { "name": "Πωλήσεις" },
+		"development": { "name": "Ανάπτυξη" },
+		"qa": { "name": "Διασφάλιση Ποιότητας (QA)" }
+	},
+	"roles": {
+		"dba": { "name": "DBA" },
+		"cloud-engineer": { "name": "Μηχανικός Cloud" },
+		"operations-specialist": { "name": "Ειδικός Λειτουργιών" },
+		"support-specialist": { "name": "Ειδικός Υποστήριξης" },
+		"qa-engineer": { "name": "Μηχανικός QA" },
+		"developer": { "name": "Προγραμματιστής/τρια" },
+		"sales-rep": { "name": "Πωλητής/τρια" }
+	},
+	"roadmap": {
+		"searchPlaceholder": "Αναζήτηση θεμάτων ή δεξιοτήτων…",
+		"sidebar": {
+			"defaultTitle": "Επίλεξε έναν κόμβο",
+			"defaultDescription": "Επίλεξε οποιοδήποτε βήμα για να δεις λεπτομέρειες εδώ. Οι διακεκομμένοι κόμβοι είναι προαιρετικοί — πέρασε το ποντίκι πάνω από έναν κόμβο για να δεις την αλυσίδα εξάρτησής του.",
+			"inProgress": "Σε εξέλιξη",
+			"done": "Ολοκληρώθηκε",
+			"openGuide": "Άνοιγμα οδηγού →",
+			"skillIntro": "Μία από τις δεξιότητες που θα αποκτήσεις μέσα από",
+			"markSkillDone": "Σήμανση ως ολοκληρωμένο"
+		},
+		"legend": {
+			"title": "Υπόμνημα",
+			"core": "Βασικό βήμα",
+			"optional": "Προαιρετικό",
+			"inProgress": "Σε εξέλιξη",
+			"done": "Ολοκληρώθηκε"
+		},
+		"placeholder": {
+			"nodes": {
+				"coming-soon": {
+					"label": "Σύντομα κοντά",
+					"description": "Ο οδικός χάρτης onboarding αυτού του ρόλου δεν έχει δημοσιευτεί ακόμα — έλα ξανά σύντομα."
+				}
+			}
+		},
+		"dba": {
+			"nodes": {
+				"ms-learn-setup": {
+					"label": "Microsoft Learn – Εγγραφή",
+					"description": "Δημιούργησε προσωπικό λογαριασμό Microsoft για να παρακολουθείς την πρόοδο και τα badges σου."
+				},
+				"az-900": {
+					"label": "AZ-900 · Azure Fundamentals",
+					"description": "Γνωριμία με το cloud και τις βασικές υπηρεσίες Azure."
+				},
+				"dp-900": {
+					"label": "DP-900 · Azure Data Fundamentals",
+					"description": "Εισαγωγή σε βάσεις δεδομένων, SQL/NoSQL και data workloads."
+				},
+				"tsql-fundamentals": {
+					"label": "Θεμέλια T-SQL",
+					"description": "Γράψε και βελτιστοποίησε πραγματικά queries: joins, indexes, stored procedures και βασικά στοιχεία query performance."
+				},
+				"dp-300": {
+					"label": "DP-300 · Administering Azure SQL",
+					"description": "Πρακτικά θέματα DBA: performance, security, backups, maintenance, HADR."
+				},
+				"intro-videos": {
+					"label": "Εσωτερικά Εισαγωγικά Videos",
+					"description": "Εισαγωγικά videos της εταιρείας και στοιχεία επικοινωνίας για onboarding."
+				},
+				"video-platforms": {
+					"label": "Πλατφόρμες Video Training",
+					"description": "Συμπληρωματικά μαθήματα στο Pluralsight, στο Udemy και εσωτερικές ηχογραφήσεις Operations."
+				},
+				"hands-on": {
+					"label": "Hands-On Περιβάλλον",
+					"description": "Δοκιμαστική συνδρομή Azure και τοπικά εργαλεία (SQL Server, SSMS) για πραγματικά DBA labs."
+				},
+				"first-rotation": {
+					"label": "Πρώτη Βάρδια Υποστήριξης",
+					"description": "Παρακολούθησε έναν senior DBA, ανάλαβε τα πρώτα σου tickets, και άρχισε να χτίζεις τα ένστικτα που έρχονται μόνο από πραγματική δουλειά σε production."
+				}
+			}
+		},
+		"cloud-engineer": {
+			"nodes": {
+				"cloud-fundamentals": {
+					"label": "Θεμέλια Cloud (AZ-900)",
+					"description": "Βασικές έννοιες cloud και υπηρεσίες Azure — το σημείο εκκίνησης για κάθε ρόλο στο cloud."
+				},
+				"networking": {
+					"label": "Δικτύωση & Συνδεσιμότητα",
+					"description": "Σχεδίασε και αντιμετώπισε προβλήματα στην υποδομή που συνδέει τα πάντα: virtual networks, gateways και DNS."
+				},
+				"compute-storage": {
+					"label": "Compute & Storage",
+					"description": "Δημιούργησε και κλιμάκωσε τα βασικά στοιχεία κάθε cloud workload: VMs, δίσκους και object storage."
+				},
+				"security-fundamentals": {
+					"label": "Θεμέλια Ασφάλειας",
+					"description": "Κλείδωσε τα πάντα: identity, έλεγχος πρόσβασης και διαχείριση secrets."
+				},
+				"iac": {
+					"label": "Infrastructure as Code",
+					"description": "Σταμάτα να κάνεις κλικ στο portal — όρισε την υποδομή σε κώδικα ώστε να είναι επαναλήψιμη και ελέγξιμη."
+				},
+				"containers": {
+					"label": "Containers & Kubernetes",
+					"description": "Πακετάρισε και ενορχήστρωσε workloads με Docker και Azure Kubernetes Service."
+				},
+				"cicd": {
+					"label": "CI/CD & Automation",
+					"description": "Αυτοματοποίησε builds, tests και deployments ώστε η κυκλοφορία κώδικα να είναι ρουτίνα — με τον καλό τρόπο."
+				},
+				"monitoring-cost": {
+					"label": "Monitoring & Διαχείριση Κόστους",
+					"description": "Μάθε τι τρέχει, πόσο κοστίζει, και ειδοποιήσου πριν χαλάσει κάτι."
+				},
+				"az-104": {
+					"label": "AZ-104 · Azure Administrator",
+					"description": "Η πιστοποίηση που ενώνει όλα τα προηγούμενα: governance, identity και καθημερινή διαχείριση Azure."
+				}
+			}
+		},
+		"operations-specialist": {
+			"nodes": {
+				"company-tools-setup": {
+					"label": "Εργαλεία & Συστήματα Εταιρείας",
+					"description": "Ρύθμισε κάθε λογαριασμό, κανάλι και σύστημα πριν καν τελειώσει η πρώτη σου μέρα."
+				},
+				"itsm-basics": {
+					"label": "Βασικά IT Service Management",
+					"description": "Μάθε πώς κινούνται τα requests, τα incidents και οι αλλαγές μέσα στον οργανισμό — και γιατί υπάρχει αυτή η διαδικασία."
+				},
+				"incident-management": {
+					"label": "Διαχείριση Incidents",
+					"description": "Όταν κάτι χαλάει, μάθε πώς να το triage-άρεις, να το escalate-άρεις και να το καταγράψεις μετά."
+				},
+				"monitoring-alerting": {
+					"label": "Monitoring & Alerting",
+					"description": "Διάβασε dashboards με άνεση και κατάλαβε τι σου ζητάει πραγματικά ένα alert."
+				},
+				"scripting-automation": {
+					"label": "Βασικά Scripting & Automation",
+					"description": "Μετάτρεψε επαναλαμβανόμενη χειροκίνητη δουλειά σε script — ο μελλοντικός σου εαυτός θα σε ευχαριστήσει."
+				},
+				"documentation": {
+					"label": "Τεκμηρίωση & Runbooks",
+					"description": "Αν δεν είναι γραμμένο, δεν έγινε. Χτίσε τη συνήθεια να τεκμηριώνεις καθώς προχωράς."
+				},
+				"communication-escalation": {
+					"label": "Επικοινωνία & Escalation",
+					"description": "Πες το σωστό πράγμα στο σωστό άτομο τη σωστή στιγμή — ειδικά όταν όλα καίγονται."
+				},
+				"continuous-improvement": {
+					"label": "Συνεχής Βελτίωση",
+					"description": "Κοίτα πίσω σε ό,τι συνέβη, βρες το μοτίβο, και κάνε τη διαδικασία καλύτερη την επόμενη φορά."
+				}
+			}
+		},
+		"support-specialist": {
+			"nodes": {
+				"support-tools-setup": {
+					"label": "Ρύθμιση Εργαλείων Υποστήριξης",
+					"description": "Ετοίμασε το helpdesk software, το ticketing σύστημα και το knowledge base πριν φτάσει το πρώτο ticket."
+				},
+				"customer-communication": {
+					"label": "Βασικά Επικοινωνίας με Πελάτες",
+					"description": "Μάθε να γράφεις και να μιλάς με τρόπο που ηρεμεί τον κόσμο αντί να τον εκνευρίζει περισσότερο."
+				},
+				"ticket-triage-support": {
+					"label": "Triage & Προτεραιοποίηση Tickets",
+					"description": "Κατάλαβε τι είναι επείγον, τι μπορεί να περιμένει, και ποιος άλλος πρέπει να ενημερωθεί."
+				},
+				"product-knowledge-support": {
+					"label": "Γνώση Προϊόντος για Support",
+					"description": "Χτίσε έναν νοητικό χάρτη του προϊόντος ώστε να απαντάς τις πιο συχνές ερωτήσεις απ' έξω."
+				},
+				"troubleshooting-diagnostics": {
+					"label": "Troubleshooting & Διάγνωση",
+					"description": "Πήγαινε πέρα από το FAQ — διάβασε logs, αναπαρήγαγε bugs και βρες την πραγματική αιτία."
+				},
+				"escalation-collaboration": {
+					"label": "Escalation & Συνεργασία με Ομάδες",
+					"description": "Μάθε πότε να παραδίδεις ένα ticket στο engineering, και πώς να το κάνεις χωρίς να χαθεί το context."
+				},
+				"customer-satisfaction": {
+					"label": "Ικανοποίηση Πελατών & Metrics",
+					"description": "Κατάλαβε τι μετράνε πραγματικά το CSAT και οι στόχοι χρόνου απόκρισης — και πώς η δουλειά σου τα επηρεάζει."
+				},
+				"first-solo-shift": {
+					"label": "Πρώτη Ατομική Βάρδια",
+					"description": "Διαχειρίσου τη δική σου ουρά tickets, με ένα δίχτυ ασφαλείας μία ανασκόπηση μακριά."
+				}
+			}
+		},
+		"qa-engineer": {
+			"nodes": {
+				"qa-fundamentals": {
+					"label": "Θεμέλια QA",
+					"description": "Κατάλαβε πού ταιριάζει το testing στον κύκλο ζωής λογισμικού και γιατί τα bugs κοστίζουν λιγότερο όταν πιάνονται νωρίς."
+				},
+				"manual-testing": {
+					"label": "Χειροκίνητο Testing",
+					"description": "Γράψε test plans, εξερεύνησε το προϊόν σαν περίεργος χρήστης, και ανέφερε καθαρά ό,τι βρίσκεις."
+				},
+				"bug-tracking": {
+					"label": "Bug Tracking & Triage",
+					"description": "Καταχώρισε bugs που οι developers μπορούν πραγματικά να αξιοποιήσουν — σαφή βήματα, σαφής σοβαρότητα, καμία εικασία."
+				},
+				"api-testing": {
+					"label": "API Testing",
+					"description": "Έλεγξε το επίπεδο που δεν βλέπουν ποτέ οι χρήστες: requests, responses, status codes και edge cases."
+				},
+				"automation-fundamentals": {
+					"label": "Θεμέλια Automation",
+					"description": "Μετάτρεψε τα καλύτερα manual tests σου σε scripts που τρέχουν μόνα τους, κάθε φορά."
+				},
+				"performance-testing": {
+					"label": "Performance & Load Testing",
+					"description": "Ανακάλυψε πώς συμπεριφέρεται το σύστημα υπό πραγματική πίεση, πριν το ανακαλύψουν οι χρήστες σου."
+				},
+				"cicd-for-qa": {
+					"label": "CI/CD & Test Pipelines",
+					"description": "Σύνδεσε τα tests σου στο pipeline ώστε ο χαλασμένος κώδικας να πιάνεται πριν κυκλοφορήσει."
+				},
+				"first-qa-rotation": {
+					"label": "Πρώτη Βάρδια QA",
+					"description": "Ανάλαβε το test coverage για ένα πραγματικό release, δίπλα σε έναν mentor που το έχει ξανακάνει."
+				}
+			}
+		},
+		"developer": {
+			"nodes": {
+				"dev-environment-setup": {
+					"label": "Ρύθμιση Dev Environment",
+					"description": "Ρύθμισε Git, editor και τοπικά εργαλεία ώστε να μπορείς επιτέλους να γράψεις κώδικα."
+				},
+				"programming-fundamentals": {
+					"label": "Θεμέλια Προγραμματισμού",
+					"description": "Τα βασικά στοιχεία που δεν αλλάζουν, όποια γλώσσα ή framework κι αν καταλήξεις να χρησιμοποιείς."
+				},
+				"web-fundamentals": {
+					"label": "Θεμέλια Web",
+					"description": "HTML, CSS και JavaScript — πώς χτίζεται και συμπεριφέρεται πραγματικά μια σελίδα σε έναν browser."
+				},
+				"backend-basics": {
+					"label": "Βασικά Backend",
+					"description": "APIs, βάσεις δεδομένων και authentication — τα κομμάτια μιας εφαρμογής που οι χρήστες δεν βλέπουν αλλά πάντα εξαρτώνται από αυτά."
+				},
+				"testing-code-quality": {
+					"label": "Testing & Ποιότητα Κώδικα",
+					"description": "Γράψε κώδικα που είναι εύκολο να εμπιστευτείς: tests, code reviews και έναν linter που σε προσέχει."
+				},
+				"version-control-workflows": {
+					"label": "Workflows Version Control",
+					"description": "Δημιούργησε branch, άνοιξε pull request, και επιβίωσε από το πρώτο σου merge conflict χωρίς πανικό."
+				},
+				"cicd-deployment": {
+					"label": "CI/CD & Deployment",
+					"description": "Κατάλαβε πώς ο κώδικας πηγαίνει από το laptop σου στο production — και πώς να τον επαναφέρεις αν κάτι πάει στραβά."
+				},
+				"first-feature-ship": {
+					"label": "Πρώτο Feature σε Παραγωγή",
+					"description": "Πάρε ένα πραγματικό ticket από την ανάλυση μέχρι το production, με pair και reviewer δίπλα σου."
+				}
+			}
+		},
+		"sales-rep": {
+			"nodes": {
+				"product-onboarding": {
+					"label": "Onboarding Προϊόντος & Εταιρείας",
+					"description": "Μάθε τι πουλάμε, σε ποιον το πουλάμε, και γιατί θα έπρεπε να τους νοιάζει."
+				},
+				"crm-fundamentals": {
+					"label": "Θεμέλια CRM",
+					"description": "Κράτα το pipeline σου καθαρό — το CRM βοηθάει μόνο όταν τα δεδομένα του είναι αξιόπιστα."
+				},
+				"prospecting": {
+					"label": "Prospecting & Lead Generation",
+					"description": "Βρες τους σωστούς ανθρώπους για να μιλήσεις πριν καν σηκώσεις το τηλέφωνο."
+				},
+				"sales-calls-demos": {
+					"label": "Κλήσεις Πωλήσεων & Demos",
+					"description": "Κάνε ένα discovery call και ένα demo που απαντάει πραγματικά στο 'γιατί να με νοιάζει;'"
+				},
+				"negotiation-closing": {
+					"label": "Διαπραγμάτευση & Closing",
+					"description": "Χειρίσου αντιρρήσεις τιμολόγησης χωρίς να χαρίσεις τη συμφωνία."
+				},
+				"account-management": {
+					"label": "Account Management",
+					"description": "Τι συμβαίνει μετά το κλείσιμο της συμφωνίας: renewals, handoffs και διατήρηση ικανοποιημένων πελατών."
+				},
+				"sales-metrics": {
+					"label": "Metrics & Αναφορές Πωλήσεων",
+					"description": "Κατάλαβε τους αριθμούς που καθορίζουν αν ένα τρίμηνο πήγε καλά — και γιατί."
+				},
+				"first-deal-closed": {
+					"label": "Πρώτη Συμφωνία σε Κλείσιμο",
+					"description": "Τρέξε μια πραγματική συμφωνία από την αρχή μέχρι το τέλος, με έναν mentor να παρακολουθεί."
+				}
+			}
+		}
+	}
+}

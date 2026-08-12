@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { groupGuidesBySlug, type ByLocale } from '../../lib/guides';
+
+export async function getStaticPaths() {
+	const guides = await getCollection('guides');
+	const bySlug = groupGuidesBySlug(guides);
+	return Array.from(bySlug.entries()).map(([slug, byLocale]) => ({
+		params: { slug },
+		props: { slug, byLocale },
+	}));
+}
+
+const { slug, byLocale } = Astro.props as { slug: string; byLocale: ByLocale };
+const en = byLocale.en;
+const el = byLocale.el;
+if (!en) throw new Error(`Missing English guide content for "${slug}"`);
+
+const { Content: ContentEn } = await render(en);
+const { Content: ContentEl } = el ? await render(el) : { Content: null };
+
+const allBySlug = groupGuidesBySlug(await getCollection('guides'));
+const sortedGuides = Array.from(allBySlug.entries())
+	.filter(([, byLoc]) => byLoc.en && byLoc.en.data.role === en.data.role)
+	.map(([s, byLoc]) => ({ slug: s, en: byLoc.en!, el: byLoc.el }))
+	.sort((a, b) => a.en.data.order - b.en.data.order);
+---
+
+<BaseLayout title={en.data.title}>
+	<div style="display: flex; gap: 2rem;">
+		<nav style="flex: 0 0 200px;">
+			<a
+				href={`/roadmap?role=${en.data.role}`}
+				style="display: inline-block; margin-bottom: 1rem; color: var(--text-dim); text-decoration: none; font-size: 0.9rem;"
+			>
+				&larr; <span data-i18n="guidePage.backToRoadmap">Back to roadmap</span>
+			</a>
+			<p
+				style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 0.5rem;"
+				data-i18n="guidePage.guides"
+			>
+				Guides
+			</p>
+			<ul style="list-style: none; padding: 0; margin: 0;">
+				{sortedGuides.map((g) => (
+					<li style="margin-bottom: 0.5rem;">
+						<a
+							href={`/guides/${g.slug}`}
+							style={`text-decoration: none; ${g.slug === slug ? 'color: var(--accent); font-weight: 600;' : 'color: var(--text-dim);'}`}
+						>
+							<span data-locale-content="en">{g.en.data.title}</span>
+							<span data-locale-content="el">{(g.el ?? g.en).data.title}</span>
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+		<article style="flex: 1; line-height: 1.7;">
+			<h1>
+				<span data-locale-content="en">{en.data.title}</span>
+				<span data-locale-content="el">{(el ?? en).data.title}</span>
+			</h1>
+			<div data-locale-content="en">
+				<ContentEn />
+			</div>
+			{ContentEl && (
+				<div data-locale-content="el">
+					<ContentEl />
+				</div>
+			)}
+		</article>
+	</div>
+</BaseLayout>

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx astro *)",
+      "Bash(curl -s -o /tmp/roadmap.html -w \"%{http_code}\\\\n\" http://localhost:4321/roadmap)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:4321/roadmap?role=dba\")",
+      "Bash(curl -s -o /dev/null -w \"/ -> %{http_code} \\(redirect: %{redirect_url}\\)\\\\n\" \"http://localhost:4321/\")",
+      "Bash(curl -s -o /dev/null -w \"/roadmap -> %{http_code}\\\\n\" \"http://localhost:4321/roadmap\")"
+    ]
+  }
+}

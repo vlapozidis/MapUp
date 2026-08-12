@@ -1,0 +1,179 @@
+---
+interface Props {
+	title: string;
+	fluid?: boolean;
+}
+const { title, fluid = false } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>MapUp · Roadmaps</title>
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<script is:inline>
+			(function () {
+				var theme = localStorage.getItem('site-theme');
+				if (theme !== 'light' && theme !== 'dark') {
+					theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+				}
+				document.documentElement.dataset.theme = theme;
+				var locale = localStorage.getItem('site-locale');
+				document.documentElement.lang = locale === 'el' ? 'el' : 'en';
+			})();
+		</script>
+	</head>
+	<body>
+		<header class="site-header">
+			<a class="brand" href="/roadmap"><img src="/logo.png" alt="MapUp" class="brand-logo" width="429" height="139" /></a>
+			<nav>
+				<button type="button" class="icon-toggle" data-locale-toggle aria-label="Switch language">EL</button>
+				<button type="button" class="icon-toggle" data-theme-toggle aria-label="Toggle color theme">🌙</button>
+			</nav>
+		</header>
+		<main class:list={{ fluid }}>
+			<slot />
+		</main>
+		<script>
+			import { getStoredLocale, translate, LOCALE_STORAGE_KEY, THEME_STORAGE_KEY, type Locale } from '../i18n';
+
+			function applyTranslations(locale: Locale) {
+				document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+					const key = el.dataset.i18n;
+					if (key) el.textContent = translate(locale, key);
+				});
+				document.documentElement.lang = locale;
+			}
+
+			const localeBtn = document.querySelector<HTMLButtonElement>('[data-locale-toggle]');
+			const themeBtn = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+
+			let locale = getStoredLocale();
+			applyTranslations(locale);
+			if (localeBtn) localeBtn.textContent = locale === 'en' ? 'EL' : 'EN';
+
+			localeBtn?.addEventListener('click', () => {
+				locale = locale === 'en' ? 'el' : 'en';
+				window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+				applyTranslations(locale);
+				localeBtn.textContent = locale === 'en' ? 'EL' : 'EN';
+				window.dispatchEvent(new CustomEvent('localechange', { detail: locale }));
+			});
+
+			if (themeBtn) {
+				themeBtn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
+			}
+
+			themeBtn?.addEventListener('click', () => {
+				const current = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+				const next = current === 'light' ? 'dark' : 'light';
+				window.localStorage.setItem(THEME_STORAGE_KEY, next);
+				document.documentElement.dataset.theme = next;
+				themeBtn.textContent = next === 'light' ? '🌙' : '☀️';
+				window.dispatchEvent(new CustomEvent('themechange', { detail: next }));
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		color-scheme: dark;
+		--bg: #0f1115;
+		--bg-elevated: #171a21;
+		--border: #2a2e37;
+		--text: #e6e8eb;
+		--text-dim: #9aa1ac;
+		--accent: #22c1a4;
+	}
+	:root[data-theme='light'] {
+		color-scheme: light;
+		--bg: #f6f7f9;
+		--bg-elevated: #ffffff;
+		--border: #dde0e6;
+		--text: #1c1f26;
+		--text-dim: #5b6270;
+		--accent: #0e9c86;
+	}
+	* { box-sizing: border-box; }
+	body {
+		margin: 0;
+		background: var(--bg);
+		color: var(--text);
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	}
+	a { color: inherit; }
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 2rem;
+		border-bottom: 1px solid var(--border);
+	}
+	.brand {
+		display: inline-flex;
+		align-items: center;
+		text-decoration: none;
+	}
+	.brand-logo {
+		height: 22px;
+		width: auto;
+		display: block;
+	}
+	.site-header nav a {
+		margin-left: 1.5rem;
+		text-decoration: none;
+		color: var(--text-dim);
+		font-size: 0.95rem;
+	}
+	.site-header nav a:hover { color: var(--text); }
+	.icon-toggle {
+		margin-left: 1rem;
+		padding: 0.3rem 0.6rem;
+		background: var(--bg-elevated);
+		border: 1px solid var(--border);
+		border-radius: 2px;
+		color: var(--text-dim);
+		font-size: 0.85rem;
+		font-family: inherit;
+		cursor: pointer;
+	}
+	.icon-toggle:hover { color: var(--text); border-color: var(--text-dim); }
+	[data-locale-content] { display: none; }
+	:root[lang='en'] [data-locale-content='en'],
+	:root[lang='el'] [data-locale-content='el'] {
+		display: revert;
+	}
+	main {
+		max-width: 960px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+	main.fluid {
+		max-width: none;
+		padding: 0;
+	}
+	.react-flow__controls {
+		box-shadow: none !important;
+		border: 1px solid var(--border);
+		border-radius: 2px;
+		overflow: hidden;
+	}
+	.react-flow__controls-button {
+		background: var(--bg-elevated) !important;
+		border-bottom: 1px solid var(--border) !important;
+	}
+	.react-flow__controls-button:hover {
+		background: var(--border) !important;
+	}
+	.react-flow__controls-button svg {
+		fill: var(--text-dim) !important;
+	}
+	.react-flow__attribution {
+		display: none;
+	}
+</style>

@@ -1,0 +1,319 @@
+{
+	"nav": {
+		"roadmap": "Roadmap"
+	},
+	"home": {
+		"title": "Welcome to onboarding",
+		"subtitle": "Find your department's roadmap, work through each step, and track your progress as you ramp up.",
+		"cta": "Open the roadmap →"
+	},
+	"guidePage": {
+		"guides": "Guides",
+		"backToRoadmap": "Back to roadmap"
+	},
+	"rolePicker": {
+		"comingSoonTitle": "Coming soon"
+	},
+	"departments": {
+		"operations": { "name": "Operations" },
+		"sales": { "name": "Sales" },
+		"development": { "name": "Development" },
+		"qa": { "name": "QA" }
+	},
+	"roles": {
+		"dba": { "name": "DBA" },
+		"cloud-engineer": { "name": "Cloud Engineer" },
+		"operations-specialist": { "name": "Operations Specialist" },
+		"support-specialist": { "name": "Support Specialist" },
+		"qa-engineer": { "name": "QA Engineer" },
+		"developer": { "name": "Developer" },
+		"sales-rep": { "name": "Sales Representative" }
+	},
+	"roadmap": {
+		"searchPlaceholder": "Search topics or skills…",
+		"sidebar": {
+			"defaultTitle": "Click a node",
+			"defaultDescription": "Select any step to see details here. Dashed nodes are optional — hover any node to trace its dependency chain.",
+			"inProgress": "In progress",
+			"done": "Done",
+			"openGuide": "Open guide →",
+			"skillIntro": "One of the skills you'll build while working through",
+			"markSkillDone": "Mark as done"
+		},
+		"legend": {
+			"title": "Legend",
+			"core": "Core step",
+			"optional": "Optional",
+			"inProgress": "In progress",
+			"done": "Done"
+		},
+		"placeholder": {
+			"nodes": {
+				"coming-soon": {
+					"label": "Coming soon",
+					"description": "This role's onboarding roadmap hasn't been published yet — check back soon."
+				}
+			}
+		},
+		"dba": {
+			"nodes": {
+				"ms-learn-setup": {
+					"label": "Microsoft Learn Setup",
+					"description": "Create a personal Microsoft account to track your training progress and badges."
+				},
+				"az-900": {
+					"label": "AZ-900 · Azure Fundamentals",
+					"description": "Introduction to cloud concepts and core Azure services."
+				},
+				"dp-900": {
+					"label": "DP-900 · Azure Data Fundamentals",
+					"description": "Basics of databases, SQL/NoSQL, and data workloads."
+				},
+				"tsql-fundamentals": {
+					"label": "T-SQL Fundamentals",
+					"description": "Write and tune real queries: joins, indexes, stored procedures, and the basics of query performance."
+				},
+				"dp-300": {
+					"label": "DP-300 · Administering Azure SQL",
+					"description": "Practical DBA topics: performance, security, backups, maintenance, HADR."
+				},
+				"intro-videos": {
+					"label": "Internal Intro Videos",
+					"description": "Company-specific introduction videos and onboarding contacts."
+				},
+				"video-platforms": {
+					"label": "Video Training Platforms",
+					"description": "Supplementary courses on Pluralsight, Udemy, and internal Operations recordings."
+				},
+				"hands-on": {
+					"label": "Hands-On Environment",
+					"description": "A dedicated Azure subscription plus local tools (SQL Server, SSMS) for real DBA labs."
+				},
+				"first-rotation": {
+					"label": "First Support Rotation",
+					"description": "Shadow a senior DBA, pick up your first tickets, and start building the instincts that only come from real production work."
+				}
+			}
+		},
+		"cloud-engineer": {
+			"nodes": {
+				"cloud-fundamentals": {
+					"label": "Cloud Fundamentals (AZ-900)",
+					"description": "Core cloud concepts and Azure services — the same starting point every cloud role builds on."
+				},
+				"networking": {
+					"label": "Networking & Connectivity",
+					"description": "Design and troubleshoot the plumbing that connects everything: virtual networks, gateways, and DNS."
+				},
+				"compute-storage": {
+					"label": "Compute & Storage",
+					"description": "Provision and scale the building blocks of any cloud workload: VMs, disks, and object storage."
+				},
+				"security-fundamentals": {
+					"label": "Security Fundamentals",
+					"description": "Lock things down: identity, access control, and secrets management."
+				},
+				"iac": {
+					"label": "Infrastructure as Code",
+					"description": "Stop clicking around the portal — define infrastructure in code so it's repeatable and reviewable."
+				},
+				"containers": {
+					"label": "Containers & Kubernetes",
+					"description": "Package and orchestrate workloads with Docker and Azure Kubernetes Service."
+				},
+				"cicd": {
+					"label": "CI/CD & Automation",
+					"description": "Automate builds, tests, and deployments so shipping code is boring — in a good way."
+				},
+				"monitoring-cost": {
+					"label": "Monitoring & Cost Management",
+					"description": "Know what's running, what it costs, and get alerted before something breaks."
+				},
+				"az-104": {
+					"label": "AZ-104 · Azure Administrator",
+					"description": "The certification that ties it all together: governance, identity, and day-to-day Azure administration."
+				}
+			}
+		},
+		"operations-specialist": {
+			"nodes": {
+				"company-tools-setup": {
+					"label": "Company Tools & Systems",
+					"description": "Get every account, channel, and system dialed in before day one is even over."
+				},
+				"itsm-basics": {
+					"label": "IT Service Management Basics",
+					"description": "Learn how requests, incidents, and changes flow through the organization — and why the process exists."
+				},
+				"incident-management": {
+					"label": "Incident Management",
+					"description": "When something breaks, know how to triage it, escalate it, and write it up afterward."
+				},
+				"monitoring-alerting": {
+					"label": "Monitoring & Alerting",
+					"description": "Read dashboards fluently and know what an alert is actually telling you to do."
+				},
+				"scripting-automation": {
+					"label": "Scripting & Automation Basics",
+					"description": "Turn repetitive manual work into a script — your future self will thank you."
+				},
+				"documentation": {
+					"label": "Documentation & Runbooks",
+					"description": "If it's not written down, it didn't happen. Build the habit of documenting as you go."
+				},
+				"communication-escalation": {
+					"label": "Communication & Escalation",
+					"description": "Say the right thing to the right person at the right time — especially when things are on fire."
+				},
+				"continuous-improvement": {
+					"label": "Continuous Improvement",
+					"description": "Look back at what happened, find the pattern, and make the process better next time."
+				}
+			}
+		},
+		"support-specialist": {
+			"nodes": {
+				"support-tools-setup": {
+					"label": "Support Tools Setup",
+					"description": "Get your helpdesk software, ticketing system, and knowledge base ready before the first ticket lands."
+				},
+				"customer-communication": {
+					"label": "Customer Communication Basics",
+					"description": "Learn to write and speak in a way that calms people down instead of winding them up."
+				},
+				"ticket-triage-support": {
+					"label": "Ticket Triage & Prioritization",
+					"description": "Figure out what's urgent, what can wait, and who else needs to know."
+				},
+				"product-knowledge-support": {
+					"label": "Product Knowledge for Support",
+					"description": "Build a mental map of the product so you can answer the top questions from memory."
+				},
+				"troubleshooting-diagnostics": {
+					"label": "Troubleshooting & Diagnostics",
+					"description": "Go beyond the FAQ — read logs, reproduce bugs, and track down the actual root cause."
+				},
+				"escalation-collaboration": {
+					"label": "Escalation & Cross-Team Collaboration",
+					"description": "Know when to hand a ticket off to engineering, and how to do it without losing context."
+				},
+				"customer-satisfaction": {
+					"label": "Customer Satisfaction & Metrics",
+					"description": "Understand what CSAT and response-time targets actually measure — and how your work moves them."
+				},
+				"first-solo-shift": {
+					"label": "First Solo Shift",
+					"description": "Handle your own ticket queue with a safety net one review away."
+				}
+			}
+		},
+		"qa-engineer": {
+			"nodes": {
+				"qa-fundamentals": {
+					"label": "QA Fundamentals",
+					"description": "Understand where testing fits in the software lifecycle and why bugs are cheaper to catch early."
+				},
+				"manual-testing": {
+					"label": "Manual Testing",
+					"description": "Write test plans, explore the product like a curious user, and report what you find clearly."
+				},
+				"bug-tracking": {
+					"label": "Bug Tracking & Triage",
+					"description": "File bugs that developers can actually act on — clear steps, clear severity, no guesswork."
+				},
+				"api-testing": {
+					"label": "API Testing",
+					"description": "Test the layer users never see: requests, responses, status codes, and edge cases."
+				},
+				"automation-fundamentals": {
+					"label": "Automation Fundamentals",
+					"description": "Turn your best manual tests into scripts that run themselves, every time."
+				},
+				"performance-testing": {
+					"label": "Performance & Load Testing",
+					"description": "Find out how the system behaves under real pressure, before your users do."
+				},
+				"cicd-for-qa": {
+					"label": "CI/CD & Test Pipelines",
+					"description": "Wire your tests into the pipeline so broken code gets caught before it ships."
+				},
+				"first-qa-rotation": {
+					"label": "First QA Rotation",
+					"description": "Own test coverage for a real release, alongside a mentor who's done it before."
+				}
+			}
+		},
+		"developer": {
+			"nodes": {
+				"dev-environment-setup": {
+					"label": "Dev Environment Setup",
+					"description": "Get Git, your editor, and local tooling configured so you can actually start writing code."
+				},
+				"programming-fundamentals": {
+					"label": "Programming Fundamentals",
+					"description": "The building blocks that don't change no matter what language or framework you land on."
+				},
+				"web-fundamentals": {
+					"label": "Web Fundamentals",
+					"description": "HTML, CSS, and JavaScript — how a page actually gets built and behaves in a browser."
+				},
+				"backend-basics": {
+					"label": "Backend Basics",
+					"description": "APIs, databases, and authentication — the parts of an app users never see but always depend on."
+				},
+				"testing-code-quality": {
+					"label": "Testing & Code Quality",
+					"description": "Write code that's easy to trust: tests, reviews, and a linter that has your back."
+				},
+				"version-control-workflows": {
+					"label": "Version Control Workflows",
+					"description": "Branch, open a pull request, and survive your first merge conflict without panicking."
+				},
+				"cicd-deployment": {
+					"label": "CI/CD & Deployment",
+					"description": "Understand how code goes from your laptop to production — and how to roll it back if it doesn't."
+				},
+				"first-feature-ship": {
+					"label": "First Feature Shipped",
+					"description": "Take a real ticket from breakdown to production, with a pair and a reviewer alongside you."
+				}
+			}
+		},
+		"sales-rep": {
+			"nodes": {
+				"product-onboarding": {
+					"label": "Product & Company Onboarding",
+					"description": "Learn what we sell, who we sell it to, and why they should care."
+				},
+				"crm-fundamentals": {
+					"label": "CRM Fundamentals",
+					"description": "Keep your pipeline clean — the CRM only helps if the data in it is trustworthy."
+				},
+				"prospecting": {
+					"label": "Prospecting & Lead Generation",
+					"description": "Find the right people to talk to before you ever pick up the phone."
+				},
+				"sales-calls-demos": {
+					"label": "Sales Calls & Demos",
+					"description": "Run a discovery call and a demo that actually answers 'why should I care?'"
+				},
+				"negotiation-closing": {
+					"label": "Negotiation & Closing",
+					"description": "Handle pricing pushback and objections without giving away the deal."
+				},
+				"account-management": {
+					"label": "Account Management",
+					"description": "What happens after the deal closes: renewals, handoffs, and keeping customers happy."
+				},
+				"sales-metrics": {
+					"label": "Sales Metrics & Reporting",
+					"description": "Understand the numbers that define whether a quarter went well — and why."
+				},
+				"first-deal-closed": {
+					"label": "First Deal Closed",
+					"description": "Run a real deal start to finish, with a mentor checking in along the way."
+				}
+			}
+		}
+	}
+}

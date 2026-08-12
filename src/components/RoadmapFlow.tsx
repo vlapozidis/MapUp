@@ -590,7 +590,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 								</div>
 								{selectedMeta.guideSlug && (
 									<a
-										href={`/guides/${selectedMeta.guideSlug}`}
+										href={`${import.meta.env.BASE_URL}/guides/${selectedMeta.guideSlug}`}
 										style={{
 											display: 'inline-block',
 											color: colors.accent,

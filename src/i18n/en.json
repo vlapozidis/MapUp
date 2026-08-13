@@ -45,7 +45,8 @@
 			"done": "Done",
 			"openGuide": "Open guide →",
 			"skillIntro": "One of the skills you'll build while working through",
-			"markSkillDone": "Mark as done"
+			"markSkillDone": "Mark as done",
+			"menu": "Menu"
 		},
 		"legend": {
 			"title": "Legend",

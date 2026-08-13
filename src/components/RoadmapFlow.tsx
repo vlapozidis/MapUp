@@ -525,7 +525,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 	const ringCircumference = 2 * Math.PI * ringRadius;
 
 	return (
-		<div style={{ display: 'flex', height: '100%', width: '100%' }}>
+		<div className="roadmap-flow-shell" style={{ display: 'flex', height: '100%', width: '100%' }}>
 			<style>{`
 				@keyframes roadmap-confetti-fall {
 					0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
@@ -535,13 +535,32 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 					0%, 100% { transform: scale(1); }
 					30% { transform: scale(1.18); }
 				}
+				.roadmap-detail-panel { width: 280px; flex-shrink: 0; border-left: 1px solid ${colors.border}; }
+				.roadmap-progress-ring { position: absolute; top: 12px; right: 12px; }
+				.roadmap-search-box { position: absolute; top: 12px; left: 12px; }
+				.roadmap-search-input { width: 200px; }
+				.roadmap-canvas-inner { height: 100%; }
+				@media (max-width: 860px) {
+					.roadmap-flow-shell { flex-direction: column; }
+					.roadmap-canvas-wrap { flex: 1 1 52vh; min-height: 320px; display: flex; flex-direction: column; }
+					.roadmap-detail-panel {
+						width: 100%;
+						flex-shrink: 0;
+						border-left: none;
+						border-top: 1px solid ${colors.border};
+						max-height: 42vh;
+						overflow-y: auto;
+					}
+					.roadmap-progress-ring { position: relative; width: fit-content; margin: 10px 12px 0 auto; }
+					.roadmap-search-box { position: relative; margin: 10px 12px 8px 12px; }
+					.roadmap-search-input { width: 100%; box-sizing: border-box; }
+					.roadmap-canvas-inner { flex: 1 1 auto; height: auto; min-height: 0; }
+				}
 			`}</style>
-			<div style={{ flex: 1, background: colors.canvasBg, position: 'relative' }}>
+			<div className="roadmap-canvas-wrap" style={{ flex: 1, background: colors.canvasBg, position: 'relative' }}>
 				<div
+					className="roadmap-progress-ring"
 					style={{
-						position: 'absolute',
-						top: 12,
-						right: 12,
 						zIndex: 5,
 						display: 'flex',
 						alignItems: 'center',
@@ -620,7 +639,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 						</div>
 					)}
 				</div>
-				<div style={{ position: 'absolute', top: 12, left: 12, zIndex: 5 }}>
+				<div className="roadmap-search-box" style={{ zIndex: 5 }}>
 					<svg
 						width="13"
 						height="13"
@@ -636,6 +655,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 						<line x1="21" y1="21" x2="16.65" y2="16.65" />
 					</svg>
 					<input
+						className="roadmap-search-input"
 						value={query}
 						onChange={(e) => setQuery(e.target.value)}
 						placeholder={t('roadmap.searchPlaceholder')}
@@ -646,29 +666,31 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 							color: colors.text,
 							padding: '6px 10px 6px 28px',
 							fontSize: 13,
-							width: 200,
 						}}
 					/>
 				</div>
-				<ReactFlow
-					nodes={nodes}
-					edges={edges}
-					nodeTypes={nodeTypes}
-					onNodesChange={onNodesChange}
-					onNodeClick={onNodeClick}
-					onNodeMouseEnter={onNodeMouseEnter}
-					onNodeMouseLeave={onNodeMouseLeave}
-					onPaneClick={onPaneClick}
-					onInit={(instance) => {
-						reactFlowInstance.current = instance;
-					}}
-					nodesConnectable={false}
-					fitView
-					proOptions={{ hideAttribution: true }}
-				>
-					<Background color={colors.backgroundDots} gap={20} />
-					<Controls showInteractive={false} />
-				</ReactFlow>
+				<div className="roadmap-canvas-inner" style={{ position: 'relative' }}>
+					<ReactFlow
+						nodes={nodes}
+						edges={edges}
+						nodeTypes={nodeTypes}
+						onNodesChange={onNodesChange}
+						onNodeClick={onNodeClick}
+						onNodeMouseEnter={onNodeMouseEnter}
+						onNodeMouseLeave={onNodeMouseLeave}
+						onPaneClick={onPaneClick}
+						onInit={(instance) => {
+							reactFlowInstance.current = instance;
+						}}
+						nodesConnectable={false}
+						minZoom={0.2}
+						fitView
+						proOptions={{ hideAttribution: true }}
+					>
+						<Background color={colors.backgroundDots} gap={20} />
+						<Controls showInteractive={false} />
+					</ReactFlow>
+				</div>
 				<div
 					style={{
 						position: 'absolute',
@@ -744,9 +766,8 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 				)}
 			</div>
 			<aside
+				className="roadmap-detail-panel"
 				style={{
-					width: 280,
-					borderLeft: `1px solid ${colors.border}`,
 					padding: '1.5rem',
 					background: colors.panelBg,
 					color: colors.text,

@@ -37,6 +37,5 @@ Once your subscription is activated, you'll get detailed connection instructions
 ## 📥 Download related content
 
 - **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — the full 12-week program this roadmap is based on, as a PDF you can keep for reference.
-- **[Classter Welcome Guide](/downloads/Classter_Welcome_Guide.docx)** — office norms, tools, and who to ask — a good one to read in your first week.
 
 You've made it through the whole onboarding path — nicely done. 👏

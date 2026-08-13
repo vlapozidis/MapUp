@@ -38,6 +38,5 @@ Your DBA training runs through Microsoft Learn using a **personal Microsoft acco
 ## 📥 Download related content
 
 - **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — the full 12-week program this roadmap is based on, as a PDF you can keep for reference.
-- **[Classter Welcome Guide](/downloads/Classter_Welcome_Guide.docx)** — office norms, tools, and who to ask — a good one to read in your first week.
 
 Next up: [AZ-900 · Azure Fundamentals](/guides/az-900) — your first real learning path. 🚀

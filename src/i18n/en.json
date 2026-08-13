@@ -57,7 +57,7 @@
 			"nodes": {
 				"coming-soon": {
 					"label": "Coming soon",
-					"description": "This role's onboarding roadmap hasn't been published yet — check back soon."
+					"description": "This role's onboarding roadmap hasn't been published yet — check back soon.\n\nWe're actively building out the step-by-step path for this role, the same way we did for DBAs, developers, and support. In the meantime, ping your onboarding contact — they can tell you what's available right now and roughly when the rest is landing."
 				}
 			}
 		},
@@ -65,39 +65,39 @@
 			"nodes": {
 				"ms-learn-setup": {
 					"label": "Microsoft Learn Setup",
-					"description": "Create a personal Microsoft account to track your training progress and badges."
+					"description": "Create a personal Microsoft account to track your training progress and badges.\n\nThis is step zero — everything else in this roadmap, from AZ-900 onward, hangs off this one account. It takes five minutes and means your certificates and progress actually stick around after you earn them."
 				},
 				"az-900": {
 					"label": "AZ-900 · Azure Fundamentals",
-					"description": "Introduction to cloud concepts and core Azure services."
+					"description": "Introduction to cloud concepts and core Azure services.\n\nEvery cloud role starts here, DBAs included — you can't administer a database in the cloud without first understanding what the cloud actually is. Expect terms like IaaS, PaaS, and availability zones to feel fuzzy at first; that's normal, and it clears up fast once DP-900 gets more concrete."
 				},
 				"dp-900": {
 					"label": "DP-900 · Azure Data Fundamentals",
-					"description": "Basics of databases, SQL/NoSQL, and data workloads."
+					"description": "Basics of databases, SQL/NoSQL, and data workloads.\n\nThis is where AZ-900's general cloud knowledge narrows in on data specifically — relational vs. non-relational, and the Azure services built for each. It's the last stop before you start writing actual T-SQL, so the vocabulary you pick up here will show up constantly in the next step."
 				},
 				"tsql-fundamentals": {
 					"label": "T-SQL Fundamentals",
-					"description": "Write and tune real queries: joins, indexes, stored procedures, and the basics of query performance."
+					"description": "Write and tune real queries: joins, indexes, stored procedures, and the basics of query performance.\n\nThis is the hands-on skill you'll use every single day as a DBA, way more than any certification. Think slow-query tickets where you have to figure out why a join is scanning the whole table instead of using an index — that instinct gets built right here, and it's exactly what DP-300 assumes you already have."
 				},
 				"dp-300": {
 					"label": "DP-300 · Administering Azure SQL",
-					"description": "Practical DBA topics: performance, security, backups, maintenance, HADR."
+					"description": "Practical DBA topics: performance, security, backups, maintenance, HADR.\n\nThis is the certification that pulls together everything before it — T-SQL, security, and cloud fundamentals — into the actual job of running a production database. Once this clicks, you're ready for the hands-on labs where you'll practice restoring backups and handling failover for real."
 				},
 				"intro-videos": {
 					"label": "Internal Intro Videos",
-					"description": "Company-specific introduction videos and onboarding contacts."
+					"description": "Company-specific introduction videos and onboarding contacts.\n\nThis one's optional and runs alongside your certification path rather than blocking it — think of it as context, not coursework. Watch it whenever you need a break from Microsoft Learn, so you know who to ask when something company-specific comes up."
 				},
 				"video-platforms": {
 					"label": "Video Training Platforms",
-					"description": "Supplementary courses on Pluralsight, Udemy, and internal Operations recordings."
+					"description": "Supplementary courses on Pluralsight, Udemy, and internal Operations recordings.\n\nAlso optional — use these if DP-300 left a topic feeling shaky, or if you just learn better from video than from reading docs. There's no expectation to plow through every course; dip in for whatever's still fuzzy before you move into hands-on labs."
 				},
 				"hands-on": {
 					"label": "Hands-On Environment",
-					"description": "A dedicated Azure subscription plus local tools (SQL Server, SSMS) for real DBA labs."
+					"description": "A dedicated Azure subscription plus local tools (SQL Server, SSMS) for real DBA labs.\n\nThis is where the certifications stop being theory — you get your own sandbox to restore backups, tune slow queries, and set up maintenance jobs without any risk to production. Expect the first couple of labs to take longer than you'd guess; that's just what learning a new environment feels like, and it's exactly what preps you for your first support rotation."
 				},
 				"first-rotation": {
 					"label": "First Support Rotation",
-					"description": "Shadow a senior DBA, pick up your first tickets, and start building the instincts that only come from real production work."
+					"description": "Shadow a senior DBA, pick up your first tickets, and start building the instincts that only come from real production work.\n\nThis is the payoff for everything before it — the certifications and lab time turn into judgment when there's a real ticket and a real person waiting on an answer. You're not on your own here: a senior DBA is right beside you until the instincts kick in on their own."
 				}
 			}
 		},
@@ -105,39 +105,39 @@
 			"nodes": {
 				"cloud-fundamentals": {
 					"label": "Cloud Fundamentals (AZ-900)",
-					"description": "Core cloud concepts and Azure services — the same starting point every cloud role builds on."
+					"description": "Core cloud concepts and Azure services — the same starting point every cloud role builds on.\n\nAZ-900 gives you the shared vocabulary — IaaS vs. PaaS, regions, availability zones — that every later topic assumes you already have. Once it clicks, networking is where things stop being abstract and start being actual virtual networks you can draw on a whiteboard."
 				},
 				"networking": {
 					"label": "Networking & Connectivity",
-					"description": "Design and troubleshoot the plumbing that connects everything: virtual networks, gateways, and DNS."
+					"description": "Design and troubleshoot the plumbing that connects everything: virtual networks, gateways, and DNS.\n\nMost \"it's broken\" tickets in cloud environments trace back to networking — a misconfigured NSG rule, a DNS record pointing at the wrong place. Get comfortable here and compute & storage will make a lot more sense, since every VM and disk you spin up next needs a network to sit on."
 				},
 				"compute-storage": {
 					"label": "Compute & Storage",
-					"description": "Provision and scale the building blocks of any cloud workload: VMs, disks, and object storage."
+					"description": "Provision and scale the building blocks of any cloud workload: VMs, disks, and object storage.\n\nThis is the part that feels most like \"real\" cloud engineering — spinning up a VM, sizing a disk, deciding where files actually live. From here the path splits: security fundamentals locks down what you just built, while IaC teaches you to build it without clicking through the portal again."
 				},
 				"security-fundamentals": {
 					"label": "Security Fundamentals",
-					"description": "Lock things down: identity, access control, and secrets management."
+					"description": "Lock things down: identity, access control, and secrets management.\n\nThis one's optional but worth the detour — a compute resource with no access controls is basically an open door. Think role assignments, managed identities, and keeping secrets out of config files where anyone can read them."
 				},
 				"iac": {
 					"label": "Infrastructure as Code",
-					"description": "Stop clicking around the portal — define infrastructure in code so it's repeatable and reviewable."
+					"description": "Stop clicking around the portal — define infrastructure in code so it's repeatable and reviewable.\n\nOnce your infrastructure lives in a Bicep or Terraform file instead of your click history, someone else can review it, roll it back, and reuse it for the next environment. It's also what makes containers and CI/CD actually practical — you can't automate deployments of infrastructure you can't describe as code."
 				},
 				"containers": {
 					"label": "Containers & Kubernetes",
-					"description": "Package and orchestrate workloads with Docker and Azure Kubernetes Service."
+					"description": "Package and orchestrate workloads with Docker and Azure Kubernetes Service.\n\nContainers solve the \"works on my machine\" problem by packaging an app with everything it needs to run anywhere. Once you're comfortable building images, CI/CD is the natural next step — that's how those images actually get built and shipped automatically instead of by hand."
 				},
 				"cicd": {
 					"label": "CI/CD & Automation",
-					"description": "Automate builds, tests, and deployments so shipping code is boring — in a good way."
+					"description": "Automate builds, tests, and deployments so shipping code is boring — in a good way.\n\nA good pipeline means deployments happen the same way every time, at 2pm or 2am, without someone remembering the seventeen manual steps. Once that's humming, monitoring & cost management is what tells you whether what you just shipped is actually behaving — and what it's costing you."
 				},
 				"monitoring-cost": {
 					"label": "Monitoring & Cost Management",
-					"description": "Know what's running, what it costs, and get alerted before something breaks."
+					"description": "Know what's running, what it costs, and get alerted before something breaks.\n\nThis is the difference between finding out about an outage from a customer versus from an alert — and finding out about a cost spike from finance versus from a dashboard. It ties together everything you've built so far, which makes it good prep for pulling it all together in AZ-104."
 				},
 				"az-104": {
 					"label": "AZ-104 · Azure Administrator",
-					"description": "The certification that ties it all together: governance, identity, and day-to-day Azure administration."
+					"description": "The certification that ties it all together: governance, identity, and day-to-day Azure administration.\n\nBy this point you've touched networking, compute, containers, and monitoring hands-on — AZ-104 is where that practical experience gets organized into the official administrator skill set. Passing it is a solid signal you're ready to own real Azure environments, not just poke at a sandbox."
 				}
 			}
 		},
@@ -145,35 +145,35 @@
 			"nodes": {
 				"company-tools-setup": {
 					"label": "Company Tools & Systems",
-					"description": "Get every account, channel, and system dialed in before day one is even over."
+					"description": "Get every account, channel, and system dialed in before day one is even over.\n\nThis is the boring-but-essential setup that everything else depends on — you can't triage an incident in a ticketing system you can't log into. Once you're set up, ITSM basics is where you learn how those tools actually get used day to day."
 				},
 				"itsm-basics": {
 					"label": "IT Service Management Basics",
-					"description": "Learn how requests, incidents, and changes flow through the organization — and why the process exists."
+					"description": "Learn how requests, incidents, and changes flow through the organization — and why the process exists.\n\nThe process can feel like red tape until you see it prevent a bad change from taking down production — then it clicks. This is also the map you'll use constantly once you're actually handling incidents in the next step."
 				},
 				"incident-management": {
 					"label": "Incident Management",
-					"description": "When something breaks, know how to triage it, escalate it, and write it up afterward."
+					"description": "When something breaks, know how to triage it, escalate it, and write it up afterward.\n\nThis is the core of the job — everything before it was preparation for exactly this moment. From here the path splits: scripting for the repetitive parts of the fix, and monitoring so you catch the next one before a customer does."
 				},
 				"monitoring-alerting": {
 					"label": "Monitoring & Alerting",
-					"description": "Read dashboards fluently and know what an alert is actually telling you to do."
+					"description": "Read dashboards fluently and know what an alert is actually telling you to do.\n\nAn alert that fires at 3am is only useful if you can tell in ten seconds whether it's urgent or noise. Getting fluent here feeds straight into documentation — the runbooks you write next are what make an alert actionable instead of just alarming."
 				},
 				"scripting-automation": {
 					"label": "Scripting & Automation Basics",
-					"description": "Turn repetitive manual work into a script — your future self will thank you."
+					"description": "Turn repetitive manual work into a script — your future self will thank you.\n\nThis one's optional but pays off fast: the third time you do the same five manual steps during an incident is usually the moment to automate them. Even a rough script beats retyping the same commands under pressure."
 				},
 				"documentation": {
 					"label": "Documentation & Runbooks",
-					"description": "If it's not written down, it didn't happen. Build the habit of documenting as you go."
+					"description": "If it's not written down, it didn't happen. Build the habit of documenting as you go.\n\nA good runbook means the next person to hit this incident — maybe you, six months from now — doesn't have to re-solve it from scratch. It's also what turns communication & escalation from guesswork into something you can point people at."
 				},
 				"communication-escalation": {
 					"label": "Communication & Escalation",
-					"description": "Say the right thing to the right person at the right time — especially when things are on fire."
+					"description": "Say the right thing to the right person at the right time — especially when things are on fire.\n\nA calm, clear status update during an outage does more for trust than a fast fix with no communication. Once an incident is actually resolved, continuous improvement is where you look back and make sure it doesn't repeat."
 				},
 				"continuous-improvement": {
 					"label": "Continuous Improvement",
-					"description": "Look back at what happened, find the pattern, and make the process better next time."
+					"description": "Look back at what happened, find the pattern, and make the process better next time.\n\nThis closes the loop on everything else in the roadmap — a postmortem that just says \"fixed it\" wastes the one useful thing an incident gives you: a chance to prevent the next one. Look for the pattern behind three similar tickets and you've usually found a process fix worth making."
 				}
 			}
 		},
@@ -181,35 +181,35 @@
 			"nodes": {
 				"support-tools-setup": {
 					"label": "Support Tools Setup",
-					"description": "Get your helpdesk software, ticketing system, and knowledge base ready before the first ticket lands."
+					"description": "Get your helpdesk software, ticketing system, and knowledge base ready before the first ticket lands.\n\nThis is the setup that makes everything after it possible — you can't practice customer communication in a helpdesk tool you haven't logged into yet. Get it dialed in now so nothing's in the way once real tickets start showing up."
 				},
 				"customer-communication": {
 					"label": "Customer Communication Basics",
-					"description": "Learn to write and speak in a way that calms people down instead of winding them up."
+					"description": "Learn to write and speak in a way that calms people down instead of winding them up.\n\nA frustrated customer usually just wants to feel heard before they want a fix — tone matters as much as the actual answer. This is the foundation for triage next: how you say something and how fast you sort it are two halves of the same skill."
 				},
 				"ticket-triage-support": {
 					"label": "Ticket Triage & Prioritization",
-					"description": "Figure out what's urgent, what can wait, and who else needs to know."
+					"description": "Figure out what's urgent, what can wait, and who else needs to know.\n\nGood triage is what keeps a busy queue from feeling chaotic — a P1 outage and a \"how do I change my password\" ticket need very different responses, and knowing which is which fast is the job. Once you can sort tickets confidently, product knowledge is what lets you actually answer them."
 				},
 				"product-knowledge-support": {
 					"label": "Product Knowledge for Support",
-					"description": "Build a mental map of the product so you can answer the top questions from memory."
+					"description": "Build a mental map of the product so you can answer the top questions from memory.\n\nMost tickets repeat the same handful of questions — once you know the product cold, you're answering from memory instead of searching docs mid-conversation. That same familiarity is exactly what you'll lean on next when troubleshooting takes you past the FAQ."
 				},
 				"troubleshooting-diagnostics": {
 					"label": "Troubleshooting & Diagnostics",
-					"description": "Go beyond the FAQ — read logs, reproduce bugs, and track down the actual root cause."
+					"description": "Go beyond the FAQ — read logs, reproduce bugs, and track down the actual root cause.\n\nThis is where support starts to feel like detective work: reproducing a bug a customer described in three vague sentences, then pinning down why it happens. When you genuinely can't crack it, escalation & collaboration is how you hand it off without losing everything you've already dug up."
 				},
 				"escalation-collaboration": {
 					"label": "Escalation & Cross-Team Collaboration",
-					"description": "Know when to hand a ticket off to engineering, and how to do it without losing context."
+					"description": "Know when to hand a ticket off to engineering, and how to do it without losing context.\n\nA bad handoff means engineering re-asks the customer everything you already found out; a good one includes logs, repro steps, and what you've ruled out. Get comfortable with that, and customer satisfaction metrics are where you see whether your work is actually landing well with customers."
 				},
 				"customer-satisfaction": {
 					"label": "Customer Satisfaction & Metrics",
-					"description": "Understand what CSAT and response-time targets actually measure — and how your work moves them."
+					"description": "Understand what CSAT and response-time targets actually measure — and how your work moves them.\n\nThese numbers aren't just for reporting upward — a dip in CSAT after a fast-but-curt reply is a real signal about tone, not just speed. Once you can read your own metrics, you're ready for a first solo shift and can tell for yourself how it's going."
 				},
 				"first-solo-shift": {
 					"label": "First Solo Shift",
-					"description": "Handle your own ticket queue with a safety net one review away."
+					"description": "Handle your own ticket queue with a safety net one review away.\n\nThis is everything before it, put together for real — your own queue, your own calls on triage and tone, with someone still checking your work before it ships. It's the last step before support becomes just what you do, not what you're learning."
 				}
 			}
 		},
@@ -217,35 +217,35 @@
 			"nodes": {
 				"qa-fundamentals": {
 					"label": "QA Fundamentals",
-					"description": "Understand where testing fits in the software lifecycle and why bugs are cheaper to catch early."
+					"description": "Understand where testing fits in the software lifecycle and why bugs are cheaper to catch early.\n\nA bug caught before it ships costs a comment on a ticket; the same bug in production costs a customer, a hotfix, and everyone's afternoon. Once that framing sticks, manual testing is where you start actually finding those bugs yourself."
 				},
 				"manual-testing": {
 					"label": "Manual Testing",
-					"description": "Write test plans, explore the product like a curious user, and report what you find clearly."
+					"description": "Write test plans, explore the product like a curious user, and report what you find clearly.\n\nThis is where you build the instinct for \"what happens if I do this weird thing\" that no automated script has yet. Every bug you find here needs to go somewhere useful — that's exactly what bug tracking is for."
 				},
 				"bug-tracking": {
 					"label": "Bug Tracking & Triage",
-					"description": "File bugs that developers can actually act on — clear steps, clear severity, no guesswork."
+					"description": "File bugs that developers can actually act on — clear steps, clear severity, no guesswork.\n\nA bug report that just says \"it's broken\" sends a developer on a scavenger hunt; one with exact repro steps and severity gets fixed same-day. From here the path splits: API testing digs into the layer users never see, while automation turns your best reports into repeatable checks."
 				},
 				"api-testing": {
 					"label": "API Testing",
-					"description": "Test the layer users never see: requests, responses, status codes, and edge cases."
+					"description": "Test the layer users never see: requests, responses, status codes, and edge cases.\n\nA lot of the nastiest bugs live below the UI — a 500 error the frontend quietly swallows, or a field that's required in the docs but not actually enforced. Once you're comfortable poking at endpoints directly, performance testing is the natural next question: does it still work when a thousand people hit it at once?"
 				},
 				"automation-fundamentals": {
 					"label": "Automation Fundamentals",
-					"description": "Turn your best manual tests into scripts that run themselves, every time."
+					"description": "Turn your best manual tests into scripts that run themselves, every time.\n\nThis is optional but changes the math on your time — the login-and-checkout flow you've clicked through fifty times is exactly what a script should be doing instead of you. Get a handful of these running and CI/CD for QA is where they start earning their keep automatically."
 				},
 				"performance-testing": {
 					"label": "Performance & Load Testing",
-					"description": "Find out how the system behaves under real pressure, before your users do."
+					"description": "Find out how the system behaves under real pressure, before your users do.\n\nThis one's optional but eye-opening the first time — a feature that feels instant with five users can crawl or fall over at five thousand. It's also a strong complement to CI/CD for QA, since load issues are exactly the kind of thing you want caught before a release, not after."
 				},
 				"cicd-for-qa": {
 					"label": "CI/CD & Test Pipelines",
-					"description": "Wire your tests into the pipeline so broken code gets caught before it ships."
+					"description": "Wire your tests into the pipeline so broken code gets caught before it ships.\n\nOnce tests run automatically on every pull request, a broken build blocks itself instead of relying on someone remembering to run the suite. That's the safety net you'll be leaning on for your first QA rotation, where you're covering a real release."
 				},
 				"first-qa-rotation": {
 					"label": "First QA Rotation",
-					"description": "Own test coverage for a real release, alongside a mentor who's done it before."
+					"description": "Own test coverage for a real release, alongside a mentor who's done it before.\n\nThis is where manual testing, bug reports, and automation stop being separate skills and become one job: deciding what needs coverage for an actual release going out the door. A mentor is there to sanity-check your calls, but the coverage plan is yours."
 				}
 			}
 		},
@@ -253,35 +253,35 @@
 			"nodes": {
 				"dev-environment-setup": {
 					"label": "Dev Environment Setup",
-					"description": "Get Git, your editor, and local tooling configured so you can actually start writing code."
+					"description": "Get Git, your editor, and local tooling configured so you can actually start writing code.\n\nA clean setup now saves you from fighting your tools later instead of the actual problem. Once this is sorted, programming fundamentals is where the real learning starts."
 				},
 				"programming-fundamentals": {
 					"label": "Programming Fundamentals",
-					"description": "The building blocks that don't change no matter what language or framework you land on."
+					"description": "The building blocks that don't change no matter what language or framework you land on.\n\nLoops, conditionals, functions, data structures — learn to think in these and switching languages later becomes a syntax problem, not a relearning-everything problem. Web fundamentals is where you'll immediately put this thinking to use, just aimed at the browser."
 				},
 				"web-fundamentals": {
 					"label": "Web Fundamentals",
-					"description": "HTML, CSS, and JavaScript — how a page actually gets built and behaves in a browser."
+					"description": "HTML, CSS, and JavaScript — how a page actually gets built and behaves in a browser.\n\nThis is the layer users actually see and click on, so bugs here are the ones people notice first. Once a page can display and react to clicks on its own, backend basics is where you learn what's actually happening behind that click."
 				},
 				"backend-basics": {
 					"label": "Backend Basics",
-					"description": "APIs, databases, and authentication — the parts of an app users never see but always depend on."
+					"description": "APIs, databases, and authentication — the parts of an app users never see but always depend on.\n\nThis is where \"click a button\" turns into \"save a row in a database and remember who you are next time.\" From here the path splits: testing & code quality for making sure this stuff keeps working, and version control workflows for collaborating on it with other people."
 				},
 				"testing-code-quality": {
 					"label": "Testing & Code Quality",
-					"description": "Write code that's easy to trust: tests, reviews, and a linter that has your back."
+					"description": "Write code that's easy to trust: tests, reviews, and a linter that has your back.\n\nThis one's optional but pays for itself the first time a test catches a bug before a reviewer has to. It sets you up well for version control workflows, since a PR with passing tests is a much easier sell to a reviewer."
 				},
 				"version-control-workflows": {
 					"label": "Version Control Workflows",
-					"description": "Branch, open a pull request, and survive your first merge conflict without panicking."
+					"description": "Branch, open a pull request, and survive your first merge conflict without panicking.\n\nEveryone hits their first ugly merge conflict — the trick is learning to read the diff calmly instead of panicking and force-pushing over someone's work. Once branching and PRs feel routine, CI/CD & deployment is what actually happens to your code after it's merged."
 				},
 				"cicd-deployment": {
 					"label": "CI/CD & Deployment",
-					"description": "Understand how code goes from your laptop to production — and how to roll it back if it doesn't."
+					"description": "Understand how code goes from your laptop to production — and how to roll it back if it doesn't.\n\nKnowing there's a rollback button is what makes shipping less scary — you don't need every deploy to be perfect, just recoverable. That confidence is exactly what carries you into your first feature ship, where all of this comes together on a real ticket."
 				},
 				"first-feature-ship": {
 					"label": "First Feature Shipped",
-					"description": "Take a real ticket from breakdown to production, with a pair and a reviewer alongside you."
+					"description": "Take a real ticket from breakdown to production, with a pair and a reviewer alongside you.\n\nThis is everything before it, end to end, on a ticket that actually matters — breaking down the work, writing the code, getting it reviewed, and watching it deploy. Having a pair alongside you means the first time doesn't have to be perfect, just done."
 				}
 			}
 		},
@@ -289,35 +289,35 @@
 			"nodes": {
 				"product-onboarding": {
 					"label": "Product & Company Onboarding",
-					"description": "Learn what we sell, who we sell it to, and why they should care."
+					"description": "Learn what we sell, who we sell it to, and why they should care.\n\nYou can't sell what you don't understand, and prospects can tell within thirty seconds whether you actually know the product. Once this is solid, CRM fundamentals is where you start tracking the people you'll be having these conversations with."
 				},
 				"crm-fundamentals": {
 					"label": "CRM Fundamentals",
-					"description": "Keep your pipeline clean — the CRM only helps if the data in it is trustworthy."
+					"description": "Keep your pipeline clean — the CRM only helps if the data in it is trustworthy.\n\nA stale CRM means you're guessing who to follow up with instead of knowing; a clean one tells you exactly who's gone quiet and who's ready for a next step. That discipline is what makes prospecting actually work, since it's the same pipeline you'll be filling."
 				},
 				"prospecting": {
 					"label": "Prospecting & Lead Generation",
-					"description": "Find the right people to talk to before you ever pick up the phone."
+					"description": "Find the right people to talk to before you ever pick up the phone.\n\nA call to the wrong person wastes both your time and theirs — good prospecting means you already know why this account is worth calling before you dial. Get that right and sales calls & demos become about the conversation itself, not about justifying why you're there."
 				},
 				"sales-calls-demos": {
 					"label": "Sales Calls & Demos",
-					"description": "Run a discovery call and a demo that actually answers 'why should I care?'"
+					"description": "Run a discovery call and a demo that actually answers 'why should I care?'\n\nA demo that shows every feature answers nothing; one built around what this specific prospect just told you they need is what actually lands. From here the path splits: negotiation for closing the deal, and account management for what happens once they're a customer."
 				},
 				"negotiation-closing": {
 					"label": "Negotiation & Closing",
-					"description": "Handle pricing pushback and objections without giving away the deal."
+					"description": "Handle pricing pushback and objections without giving away the deal.\n\nThis is optional but sharpens a real skill: the instinct to hold a price while still making the prospect feel heard, instead of jumping straight to a discount. It pairs well with account management, since the terms you agree to now are what you'll be living with for the life of the account."
 				},
 				"account-management": {
 					"label": "Account Management",
-					"description": "What happens after the deal closes: renewals, handoffs, and keeping customers happy."
+					"description": "What happens after the deal closes: renewals, handoffs, and keeping customers happy.\n\nClosing the deal is only half the job — a customer who churns at renewal because no one checked in erases the win. Understanding this side of the relationship is exactly what sales metrics measure next: retention and expansion, not just new logos."
 				},
 				"sales-metrics": {
 					"label": "Sales Metrics & Reporting",
-					"description": "Understand the numbers that define whether a quarter went well — and why."
+					"description": "Understand the numbers that define whether a quarter went well — and why.\n\nQuota, conversion rate, average deal size — these aren't just for the sales dashboard, they tell you where your own process is leaking deals. Once you can read them, your first deal closed is where you finally see your own numbers move for a real reason."
 				},
 				"first-deal-closed": {
 					"label": "First Deal Closed",
-					"description": "Run a real deal start to finish, with a mentor checking in along the way."
+					"description": "Run a real deal start to finish, with a mentor checking in along the way.\n\nThis is everything before it in one deal — prospecting, the calls, the negotiation, and the close — done for real instead of practiced in pieces. A mentor checking in means you get to make the calls yourself while still having someone to catch a mistake before it costs the deal."
 				}
 			}
 		}

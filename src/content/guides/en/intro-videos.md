@@ -32,6 +32,5 @@ Keep a running list of questions as you go through onboarding — little things 
 ## 📥 Download related content
 
 - **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — the full 12-week program this roadmap is based on, as a PDF you can keep for reference.
-- **[Classter Welcome Guide](/downloads/Classter_Welcome_Guide.docx)** — office norms, tools, and who to ask — a good one to read in your first week.
 
 This is an optional side-branch — jump back to the main path whenever you're ready, or keep going with the [video training platforms](/guides/video-platforms). 🎬

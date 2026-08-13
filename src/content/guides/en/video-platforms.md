@@ -39,6 +39,5 @@ Internal recordings covering real processes and past incidents — genuinely use
 ## 📥 Download related content
 
 - **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — the full 12-week program this roadmap is based on, as a PDF you can keep for reference.
-- **[Classter Welcome Guide](/downloads/Classter_Welcome_Guide.docx)** — office norms, tools, and who to ask — a good one to read in your first week.
 
 This is another optional branch — come back to the main path with [Hands-On Environment](/guides/hands-on) whenever you're ready. 🚀

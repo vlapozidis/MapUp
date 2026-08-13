@@ -37,6 +37,5 @@ role: dba
 ## 📥 Λήψη σχετικού υλικού
 
 - **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — το πλήρες 12-εβδομάδων πρόγραμμα στο οποίο βασίζεται αυτός ο οδικός χάρτης, σε PDF για μελλοντική αναφορά.
-- **[Οδηγός Καλωσορίσματος Classter](/downloads/Classter_Welcome_Guide.docx)** — κανόνες γραφείου, εργαλεία και ποιον να ρωτήσεις — καλό να το διαβάσεις την πρώτη εβδομάδα.
 
 Ολοκλήρωσες όλο το onboarding path — μπράβο σου. 👏

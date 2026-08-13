@@ -667,7 +667,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 					proOptions={{ hideAttribution: true }}
 				>
 					<Background color={colors.backgroundDots} gap={20} />
-					<Controls />
+					<Controls showInteractive={false} />
 				</ReactFlow>
 				<div
 					style={{
@@ -776,13 +776,20 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 									← {labelFor(selectedMeta.id)}
 								</button>
 								<h3 style={{ marginTop: 0 }}>{skillLabel}</h3>
-								<p style={{ color: colors.textDim, fontSize: 14, lineHeight: 1.5 }}>
-									{explanation || (
-										<>
-											{t('roadmap.sidebar.skillIntro')} <strong>{labelFor(selectedMeta.id)}</strong>.
-										</>
-									)}
-								</p>
+								{explanation ? (
+									explanation
+										.split('\n\n')
+										.filter(Boolean)
+										.map((paragraph, i) => (
+											<p key={i} style={{ color: colors.textDim, fontSize: 14, lineHeight: 1.5 }}>
+												{paragraph}
+											</p>
+										))
+								) : (
+									<p style={{ color: colors.textDim, fontSize: 14, lineHeight: 1.5 }}>
+										{t('roadmap.sidebar.skillIntro')} <strong>{labelFor(selectedMeta.id)}</strong>.
+									</p>
+								)}
 								<button
 									onClick={() => {
 										setStatusMap((prev) => {
@@ -812,9 +819,14 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 				) : (
 					<>
 						<h3 style={{ marginTop: 0 }}>{selectedMeta ? labelFor(selectedMeta.id) : t('roadmap.sidebar.defaultTitle')}</h3>
-						<p style={{ color: colors.textDim, fontSize: 14, lineHeight: 1.5 }}>
-							{selectedMeta ? descriptionFor(selectedMeta.id) : t('roadmap.sidebar.defaultDescription')}
-						</p>
+						{(selectedMeta ? descriptionFor(selectedMeta.id) : t('roadmap.sidebar.defaultDescription'))
+							.split('\n\n')
+							.filter(Boolean)
+							.map((paragraph, i) => (
+								<p key={i} style={{ color: colors.textDim, fontSize: 14, lineHeight: 1.5 }}>
+									{paragraph}
+								</p>
+							))}
 						{selectedMeta && (
 							<>
 								{selectedMeta.skills && selectedMeta.skills.length > 0 && (

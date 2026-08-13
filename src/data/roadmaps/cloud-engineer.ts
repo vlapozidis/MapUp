@@ -3,6 +3,12 @@ import type { RoadmapNodeMeta } from './types';
 
 export const nodes: RoadmapNodeMeta[] = [
 	{
+		id: 'tools-setup',
+		position: { x: 250, y: -120 },
+		guideSlug: 'cloud-engineer-tools-setup',
+		skills: ['Azure CLI', 'IDE Setup', 'kubectl'],
+	},
+	{
 		id: 'cloud-fundamentals',
 		position: { x: 250, y: 0 },
 		skills: ['IaaS', 'PaaS', 'SaaS', 'Cloud Economics'],
@@ -21,7 +27,7 @@ export const nodes: RoadmapNodeMeta[] = [
 		id: 'security-fundamentals',
 		position: { x: 520, y: 240 },
 		optional: true,
-		skills: ['IAM', 'RBAC', 'Key Vault', 'Zero Trust'],
+		skills: ['IAM', 'RBAC', 'Key Vault', 'Zero Trust', 'Single Sign-On'],
 	},
 	{
 		id: 'iac',
@@ -46,11 +52,12 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'az-104',
 		position: { x: 250, y: 840 },
-		skills: ['Resource Governance', 'Identity Management', 'Azure Administration'],
+		skills: ['Resource Governance', 'Identity Management', 'Azure Administration', 'Cost Management'],
 	},
 ];
 
 export const edges: Edge[] = [
+	{ id: 'e0', source: 'tools-setup', target: 'cloud-fundamentals' },
 	{ id: 'e1', source: 'cloud-fundamentals', target: 'networking' },
 	{ id: 'e2', source: 'networking', target: 'compute-storage' },
 	{ id: 'e3', source: 'compute-storage', target: 'security-fundamentals', style: { strokeDasharray: '4 4' } },

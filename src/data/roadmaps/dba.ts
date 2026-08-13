@@ -2,6 +2,12 @@ import type { Edge } from '@xyflow/react';
 import type { RoadmapNodeMeta } from './types';
 
 export const nodes: RoadmapNodeMeta[] = [
+	{
+		id: 'dba-tools-setup',
+		position: { x: 250, y: -120 },
+		guideSlug: 'dba-tools-setup',
+		skills: ['SSMS', 'Azure Data Studio', 'IDE Setup'],
+	},
 	{ id: 'ms-learn-setup', position: { x: 250, y: 0 }, guideSlug: 'ms-learn-setup' },
 	{
 		id: 'az-900',
@@ -18,7 +24,7 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'tsql-fundamentals',
 		position: { x: 250, y: 360 },
-		skills: ['T-SQL', 'Joins', 'Indexes', 'Stored Procedures', 'Query Tuning'],
+		skills: ['T-SQL', 'Joins', 'Indexes', 'Stored Procedures', 'Query Tuning', 'Execution Plans'],
 	},
 	{
 		id: 'dp-300',
@@ -32,7 +38,7 @@ export const nodes: RoadmapNodeMeta[] = [
 		id: 'hands-on',
 		position: { x: 250, y: 600 },
 		guideSlug: 'hands-on',
-		skills: ['Virtual Machines', 'SQL Server', 'SSMS', 'Networking Basics', 'Sandbox Environments'],
+		skills: ['Virtual Machines', 'SQL Server', 'SSMS', 'Networking Basics', 'Sandbox Environments', 'PowerShell'],
 	},
 	{
 		id: 'first-rotation',
@@ -42,6 +48,7 @@ export const nodes: RoadmapNodeMeta[] = [
 ];
 
 export const edges: Edge[] = [
+	{ id: 'e0', source: 'dba-tools-setup', target: 'ms-learn-setup' },
 	{ id: 'e1', source: 'ms-learn-setup', target: 'az-900' },
 	{ id: 'e2', source: 'az-900', target: 'dp-900' },
 	{ id: 'e3', source: 'dp-900', target: 'tsql-fundamentals' },

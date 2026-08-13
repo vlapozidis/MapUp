@@ -3,6 +3,12 @@ import type { RoadmapNodeMeta } from './types';
 
 export const nodes: RoadmapNodeMeta[] = [
 	{
+		id: 'tools-setup',
+		position: { x: 250, y: -120 },
+		guideSlug: 'sales-rep-tools-setup',
+		skills: ['Company Tools', 'CRM Basics', 'Dialer Software'],
+	},
+	{
 		id: 'product-onboarding',
 		position: { x: 250, y: 0 },
 		skills: ['Product Knowledge', 'Value Proposition', 'Target Market', 'Company Tools'],
@@ -15,7 +21,7 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'prospecting',
 		position: { x: 250, y: 240 },
-		skills: ['Cold Outreach', 'Lead Qualification', 'Email Sequences', 'LinkedIn Outreach'],
+		skills: ['Cold Outreach', 'Lead Qualification', 'Email Sequences', 'LinkedIn Outreach', 'Dialer Software'],
 	},
 	{
 		id: 'sales-calls-demos',
@@ -46,6 +52,7 @@ export const nodes: RoadmapNodeMeta[] = [
 ];
 
 export const edges: Edge[] = [
+	{ id: 'e0', source: 'tools-setup', target: 'product-onboarding' },
 	{ id: 'e1', source: 'product-onboarding', target: 'crm-fundamentals' },
 	{ id: 'e2', source: 'crm-fundamentals', target: 'prospecting' },
 	{ id: 'e3', source: 'prospecting', target: 'sales-calls-demos' },

@@ -5,7 +5,8 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'dev-environment-setup',
 		position: { x: 250, y: 0 },
-		skills: ['Git', 'IDE Setup', 'Package Managers', 'Local Servers'],
+		guideSlug: 'dev-environment-setup',
+		skills: ['Git', 'IDE Setup', 'Package Managers', 'Local Servers', 'Node.js'],
 	},
 	{
 		id: 'programming-fundamentals',
@@ -15,12 +16,12 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'web-fundamentals',
 		position: { x: 250, y: 240 },
-		skills: ['HTML', 'CSS', 'JavaScript', 'DOM'],
+		skills: ['HTML', 'CSS', 'JavaScript', 'DOM', 'Browser DevTools'],
 	},
 	{
 		id: 'backend-basics',
 		position: { x: 250, y: 360 },
-		skills: ['APIs', 'Databases', 'Authentication', 'Environment Variables'],
+		skills: ['APIs', 'Databases', 'Authentication', 'Environment Variables', 'REST APIs'],
 	},
 	{
 		id: 'testing-code-quality',

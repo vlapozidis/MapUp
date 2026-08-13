@@ -1,5 +1,6 @@
 export const departments = [
 	{ id: 'operations' },
+	{ id: 'support' },
 	{ id: 'sales' },
 	{ id: 'development' },
 	{ id: 'qa' },

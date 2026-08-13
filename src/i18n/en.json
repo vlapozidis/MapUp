@@ -16,6 +16,7 @@
 	},
 	"departments": {
 		"operations": { "name": "Operations" },
+		"support": { "name": "Support" },
 		"sales": { "name": "Sales" },
 		"development": { "name": "Development" },
 		"qa": { "name": "QA" }
@@ -63,6 +64,10 @@
 		},
 		"dba": {
 			"nodes": {
+				"dba-tools-setup": {
+					"label": "Tools Setup",
+					"description": "Install SSMS, Azure Data Studio, and set up your editor before anything else on this roadmap.\n\nYou'll live in SSMS for day-to-day SQL Server work and reach for Azure Data Studio when you're on a Mac or want a lighter, cross-platform editor for Azure SQL. Getting both installed and connected now means the AZ-900 and DP-900 labs later don't stall on a missing tool."
+				},
 				"ms-learn-setup": {
 					"label": "Microsoft Learn Setup",
 					"description": "Create a personal Microsoft account to track your training progress and badges.\n\nThis is step zero — everything else in this roadmap, from AZ-900 onward, hangs off this one account. It takes five minutes and means your certificates and progress actually stick around after you earn them."
@@ -103,6 +108,10 @@
 		},
 		"cloud-engineer": {
 			"nodes": {
+				"tools-setup": {
+					"label": "Tools Setup",
+					"description": "Install the Azure CLI, your editor, and kubectl before touching any cloud resources.\n\nThe Portal is fine for a first look, but almost everything you'll actually do — scripting a deployment, checking a resource's state, debugging a pipeline — goes through the CLI or kubectl instead. Setting these up now, with your editor's Azure/Kubernetes extensions installed, means the IaC and container topics later are hands-on from the first exercise."
+				},
 				"cloud-fundamentals": {
 					"label": "Cloud Fundamentals (AZ-900)",
 					"description": "Core cloud concepts and Azure services — the same starting point every cloud role builds on.\n\nAZ-900 gives you the shared vocabulary — IaaS vs. PaaS, regions, availability zones — that every later topic assumes you already have. Once it clicks, networking is where things stop being abstract and start being actual virtual networks you can draw on a whiteboard."
@@ -215,6 +224,10 @@
 		},
 		"qa-engineer": {
 			"nodes": {
+				"tools-setup": {
+					"label": "Tools Setup",
+					"description": "Get your editor, Postman, and browser DevTools set up before you write your first test case.\n\nYou don't need to code to be a strong QA engineer, but you do need to poke at requests in Postman and read a network tab in DevTools without help. Both take five minutes to install and will save you from ever having to say \"can someone check this API for me?\""
+				},
 				"qa-fundamentals": {
 					"label": "QA Fundamentals",
 					"description": "Understand where testing fits in the software lifecycle and why bugs are cheaper to catch early.\n\nA bug caught before it ships costs a comment on a ticket; the same bug in production costs a customer, a hotfix, and everyone's afternoon. Once that framing sticks, manual testing is where you start actually finding those bugs yourself."
@@ -287,6 +300,10 @@
 		},
 		"sales-rep": {
 			"nodes": {
+				"tools-setup": {
+					"label": "Tools Setup",
+					"description": "Get logged into the CRM, your dialer, and the rest of the sales stack before your first call.\n\nNothing here is complicated, but a rep who's still figuring out how to log a call in week two is a rep who's losing pipeline data every single day before that. Getting this set up on day one means CRM fundamentals next is about using the tool well, not discovering where the buttons are."
+				},
 				"product-onboarding": {
 					"label": "Product & Company Onboarding",
 					"description": "Learn what we sell, who we sell it to, and why they should care.\n\nYou can't sell what you don't understand, and prospects can tell within thirty seconds whether you actually know the product. Once this is solid, CRM fundamentals is where you start tracking the people you'll be having these conversations with."

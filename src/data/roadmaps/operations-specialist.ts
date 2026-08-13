@@ -5,7 +5,8 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'company-tools-setup',
 		position: { x: 250, y: 0 },
-		skills: ['Email & Calendar', 'Team Chat', 'Intranet', 'Single Sign-On'],
+		guideSlug: 'company-tools-setup',
+		skills: ['Email & Calendar', 'Team Chat', 'Intranet', 'Single Sign-On', 'Remote Access Tools'],
 	},
 	{
 		id: 'itsm-basics',
@@ -15,13 +16,13 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'incident-management',
 		position: { x: 250, y: 240 },
-		skills: ['Triage', 'Escalation Paths', 'Root Cause Analysis', 'Postmortems'],
+		skills: ['Triage', 'Escalation Paths', 'Root Cause Analysis', 'Postmortems', 'Written Communication'],
 	},
 	{
 		id: 'scripting-automation',
 		position: { x: 520, y: 240 },
 		optional: true,
-		skills: ['PowerShell', 'Bash', 'Scheduled Tasks', 'Automation Basics'],
+		skills: ['PowerShell', 'Bash', 'Scheduled Tasks', 'Automation Basics', 'IDE Setup'],
 	},
 	{
 		id: 'monitoring-alerting',

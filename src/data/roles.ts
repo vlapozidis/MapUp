@@ -4,7 +4,7 @@ export const roles = [
 	{ id: 'dba', department: 'operations' },
 	{ id: 'cloud-engineer', department: 'operations' },
 	{ id: 'operations-specialist', department: 'operations' },
-	{ id: 'support-specialist', department: 'operations' },
+	{ id: 'support-specialist', department: 'support' },
 	{ id: 'qa-engineer', department: 'qa' },
 	{ id: 'developer', department: 'development' },
 	{ id: 'sales-rep', department: 'sales' },

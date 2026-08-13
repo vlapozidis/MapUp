@@ -5,7 +5,8 @@ export const nodes: RoadmapNodeMeta[] = [
 	{
 		id: 'support-tools-setup',
 		position: { x: 250, y: 0 },
-		skills: ['Helpdesk Software', 'Ticketing Systems', 'Knowledge Base', 'Company Tools'],
+		guideSlug: 'support-tools-setup',
+		skills: ['Helpdesk Software', 'Ticketing Systems', 'Knowledge Base', 'Company Tools', 'Screen Sharing Tools'],
 	},
 	{
 		id: 'customer-communication',
@@ -26,7 +27,7 @@ export const nodes: RoadmapNodeMeta[] = [
 		id: 'troubleshooting-diagnostics',
 		position: { x: 520, y: 360 },
 		optional: true,
-		skills: ['Log Reading', 'Reproducing Bugs', 'Root Cause Analysis'],
+		skills: ['Log Reading', 'Reproducing Bugs', 'Root Cause Analysis', 'Browser DevTools'],
 	},
 	{
 		id: 'escalation-collaboration',

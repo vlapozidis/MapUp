@@ -6,6 +6,6 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://vlapozidis.github.io',
-  base: '/roadmap-demo',
+  base: '/MapUp',
   integrations: [react()]
 });

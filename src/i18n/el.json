@@ -30,6 +30,12 @@
 		"sales-rep": { "name": "Πωλητής/τρια" }
 	},
 	"roadmap": {
+		"progress": {
+			"label": "Ολοκληρωμένο",
+			"reset": "Επαναφορά προόδου",
+			"resetToast": "Η πρόοδος επανήλθε.",
+			"undo": "Αναίρεση"
+		},
 		"searchPlaceholder": "Αναζήτηση θεμάτων ή δεξιοτήτων…",
 		"sidebar": {
 			"defaultTitle": "Επίλεξε έναν κόμβο",

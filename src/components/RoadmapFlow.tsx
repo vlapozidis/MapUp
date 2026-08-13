@@ -3,12 +3,14 @@ import {
 	ReactFlow,
 	Background,
 	Controls,
+	MarkerType,
 	Handle,
 	Position,
 	type Node,
 	type Edge,
 	type NodeProps,
 	type NodeMouseHandler,
+	type NodeChange,
 	type ReactFlowInstance,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -38,11 +40,12 @@ type RoadmapNodeData = {
 	highlighted?: boolean;
 	blurred?: boolean;
 	hasSkills?: boolean;
+	revealed?: boolean;
 	theme: Theme;
 };
 
 function RoadmapNode({ data }: NodeProps<Node<RoadmapNodeData>>) {
-	const { label, optional, status, dimmed, highlighted, blurred, hasSkills, theme } = data;
+	const { label, optional, status, dimmed, highlighted, blurred, hasSkills, revealed = true, theme } = data;
 	const colors = THEME_COLORS[theme];
 	const accent = status ? STATUS_COLOR[status] : optional ? colors.optionalBorder : colors.border;
 	const baseShadow = theme === 'light' ? '0 1px 2px rgba(15,17,21,0.12)' : '0 1px 2px rgba(0,0,0,0.4)';
@@ -62,10 +65,11 @@ function RoadmapNode({ data }: NodeProps<Node<RoadmapNodeData>>) {
 				padding: '8px 14px',
 				fontSize: 13,
 				fontFamily: 'inherit',
-				opacity: dimmed ? 0.3 : blurred ? 0.5 : 1,
+				opacity: !revealed ? 0 : dimmed ? 0.3 : blurred ? 0.5 : 1,
 				filter: blurred ? 'blur(2px)' : 'none',
 				boxShadow: highlighted ? `${baseShadow}, 0 0 0 2px ${accent}55` : baseShadow,
-				transition: 'opacity 150ms, box-shadow 150ms, filter 150ms',
+				transform: revealed ? 'scale(1)' : 'scale(0.92)',
+				transition: 'opacity 320ms ease, transform 320ms ease, box-shadow 150ms, filter 150ms',
 			}}
 		>
 			<Handle type="target" position={Position.Top} style={{ opacity: 0, pointerEvents: 'none' }} />
@@ -180,6 +184,26 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 	const [query, setQuery] = useState('');
 	const reactFlowInstance = useRef<ReactFlowInstance<Node<RoadmapNodeData>, Edge> | null>(null);
 
+	// The nodes we pass to <ReactFlow> are fully derived/controlled, with no onNodesChange
+	// state to write dimensions back into — so measured sizes (needed by MiniMap) are
+	// tracked separately here and merged into each node below.
+	const [measured, setMeasured] = useState<Record<string, { width: number; height: number }>>({});
+	const onNodesChange = useCallback((changes: NodeChange[]) => {
+		setMeasured((prev) => {
+			let next = prev;
+			for (const change of changes) {
+				if (change.type === 'dimensions' && change.dimensions) {
+					const existing = next[change.id];
+					if (!existing || existing.width !== change.dimensions.width || existing.height !== change.dimensions.height) {
+						next = next === prev ? { ...prev } : next;
+						next[change.id] = change.dimensions;
+					}
+				}
+			}
+			return next;
+		});
+	}, []);
+
 	useEffect(() => {
 		try {
 			const raw = window.localStorage.getItem(storageKey);
@@ -196,7 +220,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 	const t = useCallback((path: string) => translate(locale, path), [locale]);
 	const colors = THEME_COLORS[theme];
 
-	const { ancestorsOf, descendantsOf } = useMemo(() => {
+	const { ancestorsOf, descendantsOf, parentsOf, childrenOf } = useMemo(() => {
 		const parents = new Map<string, string[]>();
 		const children = new Map<string, string[]>();
 		for (const e of initialEdges) {
@@ -211,8 +235,36 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 			ancestorsOf.set(n.id, collectReachable(n.id, parents));
 			descendantsOf.set(n.id, collectReachable(n.id, children));
 		}
-		return { ancestorsOf, descendantsOf };
+		return { ancestorsOf, descendantsOf, parentsOf: parents, childrenOf: children };
 	}, [rawNodes, initialEdges]);
+
+	// Distance (in edge hops) from the nearest root — drives the staggered "path reveal" on mount.
+	const depthOf = useMemo(() => {
+		const depth = new Map<string, number>();
+		const queue: Array<[string, number]> = rawNodes.filter((n) => !(parentsOf.get(n.id) ?? []).length).map((n) => [n.id, 0]);
+		while (queue.length) {
+			const [id, d] = queue.shift()!;
+			if (depth.has(id)) continue;
+			depth.set(id, d);
+			for (const child of childrenOf.get(id) ?? []) queue.push([child, d + 1]);
+		}
+		for (const n of rawNodes) if (!depth.has(n.id)) depth.set(n.id, 0);
+		return depth;
+	}, [rawNodes, parentsOf, childrenOf]);
+
+	const maxDepth = useMemo(() => Math.max(0, ...Array.from(depthOf.values())), [depthOf]);
+
+	const [revealStep, setRevealStep] = useState(0);
+	useEffect(() => {
+		if (maxDepth === 0) return;
+		let step = 0;
+		const interval = setInterval(() => {
+			step += 1;
+			setRevealStep(step);
+			if (step >= maxDepth) clearInterval(interval);
+		}, 130);
+		return () => clearInterval(interval);
+	}, [maxDepth]);
 
 	const labelFor = useCallback(
 		(id: string) => translateWithFallback(locale, `${keyPrefix}.${id}.label`, `roadmap.placeholder.nodes.${id}.label`),
@@ -249,6 +301,22 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 	// Search takes priority over hover when both are active.
 	const activeSet = matchIds ?? connectedIds;
 
+	const coreNodes = useMemo(() => rawNodes.filter((n) => !n.optional), [rawNodes]);
+	const doneCount = useMemo(() => coreNodes.filter((n) => statusMap[n.id] === 'done').length, [coreNodes, statusMap]);
+	const percent = coreNodes.length ? Math.round((doneCount / coreNodes.length) * 100) : 0;
+
+	const [celebrate, setCelebrate] = useState(false);
+	const prevPercentRef = useRef(percent);
+	useEffect(() => {
+		const prev = prevPercentRef.current;
+		prevPercentRef.current = percent;
+		if (percent === 100 && prev < 100) {
+			setCelebrate(true);
+			const timer = setTimeout(() => setCelebrate(false), 2200);
+			return () => clearTimeout(timer);
+		}
+	}, [percent]);
+
 	const selectedNodeMeta = selectedId ? rawNodes.find((n) => n.id === selectedId) ?? null : null;
 	const expandedSkills = selectedNodeMeta?.skills ?? [];
 
@@ -259,6 +327,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 			id: n.id,
 			position: n.position,
 			type: 'roadmap',
+			measured: measured[n.id],
 			data: {
 				label: labelFor(n.id),
 				optional: n.optional,
@@ -267,6 +336,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 				highlighted: activeSet ? activeSet.has(n.id) : false,
 				blurred: fannedOut && n.id !== selectedNodeMeta!.id,
 				hasSkills: Boolean(n.skills && n.skills.length > 0),
+				revealed: revealStep >= (depthOf.get(n.id) ?? 0),
 				theme,
 			},
 		}));
@@ -281,6 +351,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 				id: skillId,
 				position: { x: baseX, y: baseY + i * 42 },
 				type: 'subtopic',
+				measured: measured[skillId],
 				data: {
 					label: skill,
 					done: statusMap[skillId] === 'done',
@@ -298,22 +369,25 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 		});
 
 		return [...mainNodes, ...skillNodes];
-	}, [statusMap, activeSet, labelFor, theme, rawNodes, selectedNodeMeta, expandedSkills, fannedOut]);
+	}, [statusMap, activeSet, labelFor, theme, rawNodes, selectedNodeMeta, expandedSkills, fannedOut, measured, revealStep, depthOf]);
 
 	const edges = useMemo<Edge[]>(() => {
 		const mainEdges = initialEdges.map((e) => {
 			const active = activeSet ? activeSet.has(e.source) && activeSet.has(e.target) : true;
 			const done = statusMap[e.target] === 'done';
 			const touchesSelected = selectedNodeMeta && (e.source === selectedNodeMeta.id || e.target === selectedNodeMeta.id);
+			const markerColor = done ? STATUS_COLOR.done : colors.border;
+			const revealed = revealStep >= (depthOf.get(e.target) ?? 0);
 			return {
 				...e,
 				style: {
 					...e.style,
-					opacity: active ? (fannedOut && !touchesSelected ? 0.35 : 1) : 0.15,
+					opacity: !revealed ? 0 : active ? (fannedOut && !touchesSelected ? 0.35 : 1) : 0.15,
 					filter: fannedOut && !touchesSelected ? 'blur(2px)' : 'none',
-					transition: 'opacity 150ms, stroke 150ms, filter 150ms',
+					transition: 'opacity 320ms ease, stroke 150ms, filter 150ms',
 					...(done ? { stroke: STATUS_COLOR.done, strokeWidth: 2 } : null),
 				},
+				markerEnd: { type: MarkerType.ArrowClosed, color: markerColor, width: 16, height: 16 },
 				animated: Boolean(connectedIds && connectedIds.has(e.source) && connectedIds.has(e.target)),
 			};
 		});
@@ -340,20 +414,23 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 		});
 
 		return [...mainEdges, ...skillEdges];
-	}, [activeSet, connectedIds, initialEdges, selectedNodeMeta, expandedSkills, colors.accent, statusMap, fannedOut]);
+	}, [activeSet, connectedIds, initialEdges, selectedNodeMeta, expandedSkills, colors.accent, colors.border, statusMap, fannedOut, revealStep, depthOf]);
 
 	const selectedMeta = selectedNodeMeta;
 	const selectedStatus = selectedId ? statusMap[selectedId] : undefined;
 
+	const selectNode = useCallback((id: string) => {
+		setSelectedId(id);
+		setSelectedSkill(null);
+		reactFlowInstance.current?.fitView({ nodes: [{ id }], duration: 400, maxZoom: 1.2, padding: 1 });
+	}, []);
 	const onNodeClick = useCallback<NodeMouseHandler>((_, node) => {
 		if (node.type === 'subtopic') {
 			setSelectedSkill(node.id);
 			return;
 		}
-		setSelectedId(node.id);
-		setSelectedSkill(null);
-		reactFlowInstance.current?.fitView({ nodes: [{ id: node.id }], duration: 400, maxZoom: 1.2, padding: 1 });
-	}, []);
+		selectNode(node.id);
+	}, [selectNode]);
 	const onPaneClick = useCallback(() => {
 		setSelectedId(null);
 		setSelectedSkill(null);
@@ -369,6 +446,57 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 		hoverLeaveTimeout.current = setTimeout(() => setHoveredId(null), 80);
 	}, []);
 
+	// Prefer the neighbor that continues along the same vertical column (the core path)
+	// over branches that veer off to optional side-nodes.
+	const closestByX = useCallback(
+		(candidates: string[] | undefined, fromId: string): string | null => {
+			if (!candidates || candidates.length === 0) return null;
+			const fromNode = rawNodes.find((n) => n.id === fromId);
+			if (!fromNode) return candidates[0];
+			return candidates.reduce((best, id) => {
+				const node = rawNodes.find((n) => n.id === id);
+				if (!node) return best;
+				const bestNode = rawNodes.find((n) => n.id === best);
+				if (!bestNode) return id;
+				return Math.abs(node.position.x - fromNode.position.x) < Math.abs(bestNode.position.x - fromNode.position.x) ? id : best;
+			}, candidates[0]);
+		},
+		[rawNodes]
+	);
+
+	useEffect(() => {
+		const onKeyDown = (e: KeyboardEvent) => {
+			const target = e.target as HTMLElement | null;
+			if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return;
+
+			if (e.key === 'Escape') {
+				onPaneClick();
+				return;
+			}
+			if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+
+			if (!selectedId) {
+				const first = rawNodes.find((n) => !(parentsOf.get(n.id) ?? []).length) ?? rawNodes[0];
+				if (first) {
+					e.preventDefault();
+					selectNode(first.id);
+				}
+				return;
+			}
+
+			const next =
+				e.key === 'ArrowDown' || e.key === 'ArrowRight'
+					? closestByX(childrenOf.get(selectedId), selectedId)
+					: closestByX(parentsOf.get(selectedId), selectedId);
+			if (next) {
+				e.preventDefault();
+				selectNode(next);
+			}
+		};
+		window.addEventListener('keydown', onKeyDown);
+		return () => window.removeEventListener('keydown', onKeyDown);
+	}, [selectedId, rawNodes, parentsOf, childrenOf, closestByX, selectNode, onPaneClick]);
+
 	const setStatus = (status: Status | undefined) => {
 		if (!selectedId) return;
 		setStatusMap((prev) => {
@@ -379,9 +507,119 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 		});
 	};
 
+	const [undoSnapshot, setUndoSnapshot] = useState<Record<string, Status> | null>(null);
+	const undoTimeout = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+	const resetProgress = () => {
+		setUndoSnapshot(statusMap);
+		setStatusMap({});
+		clearTimeout(undoTimeout.current);
+		undoTimeout.current = setTimeout(() => setUndoSnapshot(null), 6000);
+	};
+	const undoReset = () => {
+		if (undoSnapshot) setStatusMap(undoSnapshot);
+		setUndoSnapshot(null);
+		clearTimeout(undoTimeout.current);
+	};
+
+	const ringRadius = 15;
+	const ringCircumference = 2 * Math.PI * ringRadius;
+
 	return (
 		<div style={{ display: 'flex', height: '100%', width: '100%' }}>
+			<style>{`
+				@keyframes roadmap-confetti-fall {
+					0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+					100% { transform: translateY(140px) rotate(540deg); opacity: 0; }
+				}
+				@keyframes roadmap-ring-pop {
+					0%, 100% { transform: scale(1); }
+					30% { transform: scale(1.18); }
+				}
+			`}</style>
 			<div style={{ flex: 1, background: colors.canvasBg, position: 'relative' }}>
+				<div
+					style={{
+						position: 'absolute',
+						top: 12,
+						right: 12,
+						zIndex: 5,
+						display: 'flex',
+						alignItems: 'center',
+						gap: 8,
+						background: colors.nodeBg,
+						border: `1px solid ${colors.border}`,
+						borderRadius: 2,
+						padding: '6px 10px',
+						boxShadow: theme === 'light' ? '0 1px 2px rgba(15,17,21,0.12)' : '0 1px 2px rgba(0,0,0,0.4)',
+						animation: celebrate ? 'roadmap-ring-pop 0.6s ease-in-out' : 'none',
+					}}
+				>
+					<svg width="36" height="36" viewBox="0 0 36 36" style={{ flexShrink: 0 }}>
+						<circle cx="18" cy="18" r={ringRadius} fill="none" stroke={colors.border} strokeWidth="3" />
+						<circle
+							cx="18"
+							cy="18"
+							r={ringRadius}
+							fill="none"
+							stroke={percent === 100 ? STATUS_COLOR.done : colors.accent}
+							strokeWidth="3"
+							strokeLinecap="round"
+							strokeDasharray={ringCircumference}
+							strokeDashoffset={ringCircumference * (1 - percent / 100)}
+							transform="rotate(-90 18 18)"
+							style={{ transition: 'stroke-dashoffset 400ms ease, stroke 400ms' }}
+						/>
+					</svg>
+					<div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+						<span style={{ fontSize: 12.5, fontWeight: 700, color: percent === 100 ? STATUS_COLOR.done : colors.text }}>
+							{percent}%
+						</span>
+						<span style={{ fontSize: 10.5, color: colors.textDim }}>{t('roadmap.progress.label')}</span>
+					</div>
+					{Object.keys(statusMap).length > 0 && (
+						<button
+							onClick={resetProgress}
+							title={t('roadmap.progress.reset')}
+							style={{
+								background: 'none',
+								border: 'none',
+								color: colors.textDim,
+								cursor: 'pointer',
+								padding: 4,
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}
+						>
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M3 12a9 9 0 1 0 2.64-6.36" />
+								<polyline points="3 4 3 10 9 10" />
+							</svg>
+						</button>
+					)}
+					{celebrate && (
+						<div style={{ position: 'absolute', inset: 0, overflow: 'visible', pointerEvents: 'none' }}>
+							{Array.from({ length: 14 }).map((_, i) => {
+								const colorsList = [STATUS_COLOR.done, colors.accent, '#eab308', '#8b5cf6'];
+								return (
+									<span
+										key={i}
+										style={{
+											position: 'absolute',
+											top: 4,
+											left: `${8 + (i * 90) / 14}%`,
+											width: 5,
+											height: 5,
+											borderRadius: 1,
+											background: colorsList[i % colorsList.length],
+											animation: `roadmap-confetti-fall ${0.9 + (i % 4) * 0.15}s ease-in ${(i % 5) * 0.05}s forwards`,
+										}}
+									/>
+								);
+							})}
+						</div>
+					)}
+				</div>
 				<div style={{ position: 'absolute', top: 12, left: 12, zIndex: 5 }}>
 					<svg
 						width="13"
@@ -416,6 +654,7 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 					nodes={nodes}
 					edges={edges}
 					nodeTypes={nodeTypes}
+					onNodesChange={onNodesChange}
 					onNodeClick={onNodeClick}
 					onNodeMouseEnter={onNodeMouseEnter}
 					onNodeMouseLeave={onNodeMouseLeave}
@@ -466,6 +705,43 @@ export default function RoadmapFlow({ role, theme, locale }: Props) {
 						</span>
 					</div>
 				</div>
+				{undoSnapshot && (
+					<div
+						style={{
+							position: 'absolute',
+							bottom: 16,
+							left: '50%',
+							transform: 'translateX(-50%)',
+							zIndex: 6,
+							display: 'flex',
+							alignItems: 'center',
+							gap: 10,
+							background: colors.nodeBg,
+							border: `1px solid ${colors.border}`,
+							borderRadius: 2,
+							padding: '8px 12px',
+							fontSize: 12.5,
+							color: colors.text,
+							boxShadow: theme === 'light' ? '0 2px 6px rgba(15,17,21,0.16)' : '0 2px 6px rgba(0,0,0,0.5)',
+						}}
+					>
+						<span>{t('roadmap.progress.resetToast')}</span>
+						<button
+							onClick={undoReset}
+							style={{
+								background: 'none',
+								border: 'none',
+								color: colors.accent,
+								fontWeight: 700,
+								fontSize: 12.5,
+								cursor: 'pointer',
+								padding: 0,
+							}}
+						>
+							{t('roadmap.progress.undo')}
+						</button>
+					</div>
+				)}
 			</div>
 			<aside
 				style={{

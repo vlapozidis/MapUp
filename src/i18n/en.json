@@ -30,6 +30,12 @@
 		"sales-rep": { "name": "Sales Representative" }
 	},
 	"roadmap": {
+		"progress": {
+			"label": "Complete",
+			"reset": "Reset progress",
+			"resetToast": "Progress reset.",
+			"undo": "Undo"
+		},
 		"searchPlaceholder": "Search topics or skills…",
 		"sidebar": {
 			"defaultTitle": "Click a node",

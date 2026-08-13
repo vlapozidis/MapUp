@@ -29,4 +29,9 @@ You don't have to figure any of this out alone. If something in the videos doesn
 
 Keep a running list of questions as you go through onboarding — little things you're curious about but that don't block you right now. Bring the list to your first 1:1. It's a great way to make the most of that time.
 
+## 📥 Download related content
+
+- **[DBA Training Program — Trainee's Handout](/downloads/Trainees_Handout_ClassterDBA.pdf)** — the full 12-week program this roadmap is based on, as a PDF you can keep for reference.
+- **[Classter Welcome Guide](/downloads/Classter_Welcome_Guide.docx)** — office norms, tools, and who to ask — a good one to read in your first week.
+
 This is an optional side-branch — jump back to the main path whenever you're ready, or keep going with the [video training platforms](/guides/video-platforms). 🎬
